@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contact Us | Whimsy & Weave</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/contact.css">
+</head>
+
+<body>
+
+    <!-- =========================
+  BACKGROUND
+  ========================== -->
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="grain"></div>
+
+    <!-- =========================
+  NAVBAR
+  ========================== -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand">
+
+                <div class="brand-badge">
+                    <img src="./img/images/logo.jpg" alt="Whimsy & Weave Logo">
+                </div>
+
+                <div>
+                    <span>Whimsy &amp; Weave</span>
+                    <small>A little whimsy in every weave</small>
+                </div>
+
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="index.html">Home</a>
+                <a href="product.html">Products</a>
+                <a href="custom-order.html">Custom Orders</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+                <a href="workshop.html">Workshops</a>
+
+            </nav>
+
+            <a href="product.html" class="nav-btn">
+                Explore Collection
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- =========================
+  HERO
+  ========================== -->
+
+    <section class="contact-hero">
+
+        <div class="floating-yarn yarn-1"></div>
+        <div class="floating-yarn yarn-2"></div>
+        <div class="floating-heart"></div>
+
+        <div class="container hero-inner">
+
+            <div class="hero-content fade-up">
+
+                <p class="eyebrow">
+                    CONTACT US
+                </p>
+
+                <h1>
+                    Let’s Create Something
+                    Beautiful Together
+                </h1>
+
+                <p class="hero-text">
+                    Questions, collaborations, bulk orders or custom crochet dreams —
+                    we’d love to hear from you.
+                </p>
+
+                <a href="#contact-form" class="hero-btn">
+                    Send A Message
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+  CONTACT CARDS
+  ========================== -->
+
+    <section class="contact-options">
+
+        <div class="container">
+
+            <div class="section-heading fade-up">
+
+                <p class="eyebrow">
+                    HOW CAN WE HELP?
+                </p>
+
+                <h2>
+                    Reach Out For Anything Cozy ✨
+                </h2>
+
+            </div>
+
+            <div class="options-grid">
+
+                <div class="option-card fade-up">
+                    <div class="option-icon">🧶</div>
+                    <h3>Custom Orders</h3>
+                    <p>Personalized crochet creations made specially for you.</p>
+                    <button>Enquire Now</button>
+                </div>
+
+                <div class="option-card fade-up delay-1">
+                    <div class="option-icon">🤝</div>
+                    <h3>Collaborations</h3>
+                    <p>Creative partnerships, collabs and brand projects.</p>
+                    <button>Collaborate</button>
+                </div>
+
+                <div class="option-card fade-up delay-2">
+                    <div class="option-icon">🎪</div>
+                    <h3>Stall Enquiries</h3>
+                    <p>Campus events, exhibitions and handmade market stalls.</p>
+                    <button>Invite Us</button>
+                </div>
+
+                <div class="option-card fade-up delay-3">
+                    <div class="option-icon">🎁</div>
+                    <h3>Bulk Orders</h3>
+                    <p>Return gifts, event hampers and bouquet collections.</p>
+                    <button>Get Quote</button>
+                </div>
+
+                <div class="option-card fade-up delay-4">
+                    <div class="option-icon">💌</div>
+                    <h3>General Questions</h3>
+                    <p>Shipping, product help or anything else you’d like to ask.</p>
+                    <button>Ask Away</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+  CONTACT FORM
+  ========================== -->
+
+    <section class="contact-form-section" id="contact-form">
+
+        <div class="container form-grid">
+
+            <div class="form-copy fade-up">
+
+                <p class="eyebrow">
+                    LET’S TALK
+                </p>
+
+                <h2>
+                    Tell Us About Your
+                    Crochet Dream
+                </h2>
+
+                <p>
+                    Whether it’s a custom plushie, bouquet blanket,
+                    event gifting idea or a cozy collaboration —
+                    we’d love to hear your ideas.
+                </p>
+
+            </div>
+
+            <div class="contact-form-card fade-up delay-1">
+
+                <form id="contactForm">
+
+                    <div class="form-group">
+                        <input id="contactName" name="name" type="text" required>
+                        <label for="contactName">Full Name</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="contactEmail" name="email" type="email" required>
+                        <label for="contactEmail">Email Address</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="contactPhone" name="phone" type="tel">
+                        <label for="contactPhone">Phone Number</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="contactSubject" name="subject" type="text">
+                        <label for="contactSubject">Subject</label>
+                    </div>
+
+                    <div class="form-group full">
+                        <select id="contactType" name="enquiryType" required>
+                            <option value="">Choose Enquiry Type</option>
+                            <option>Custom Order</option>
+                            <option>Collaboration</option>
+                            <option>Stall Invitation</option>
+                            <option>Bulk Order</option>
+                            <option>Product Question</option>
+                            <option>Shipping Help</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full">
+                        <textarea id="contactMessage" name="message" required></textarea>
+                        <label for="contactMessage">Message</label>
+                    </div>
+
+                <div class="upload-box full">
+
+                    <div class="upload-input-wrapper">
+                        <label for="reference-upload" class="upload-label">
+                            <div class="upload-icon">✨📸</div>
+                            <div class="upload-text">
+                                <span class="upload-title">Upload Reference Images</span>
+                                <span class="upload-hint">Click to select or drag & drop</span>
+                            </div>
+                        </label>
+                        <input
+                            type="file"
+                            id="reference-upload"
+                            accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                            multiple
+                            style="display: none;"
+                        >
+                    </div>
+
+                    <div id="preview-container" class="preview-container"></div>
+
+                </div>
+                    <div class="contact-methods full">
+
+                        <h4>Preferred Contact Method</h4>
+
+                        <div class="method-options">
+
+                            <label class="method-pill">
+                                <input type="radio" name="preferredContact" value="Email" checked>
+                                Email
+                            </label>
+
+                            <label class="method-pill">
+                                <input type="radio" name="preferredContact" value="WhatsApp">
+                                WhatsApp
+                            </label>
+
+                            <label class="method-pill">
+                                <input type="radio" name="preferredContact" value="Instagram">
+                                Instagram
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-buttons full">
+
+                        <button class="submit-btn" type="submit">
+                            Send Message
+                        </button>
+
+                        <button type="reset" class="reset-btn">
+                            Reset Form
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+  COLLAB SECTION
+  ========================== -->
+
+    <section class="collab-section">
+
+        <div class="container collab-grid">
+
+            <div class="collab-visual fade-up">
+
+                <div class="collage large"></div>
+                <div class="collage small"></div>
+
+            </div>
+
+            <div class="collab-content fade-up delay-1">
+
+                <p class="eyebrow">
+                    COLLABORATIONS & BULK ORDERS
+                </p>
+
+                <h2>
+                    Handmade Experiences
+                    For Every Occasion
+                </h2>
+
+                <p>
+                    We love creating personalized handmade experiences for events,
+                    exhibitions, gifting partnerships and creative collaborations.
+                </p>
+
+                <div class="collab-features">
+
+                    <div class="feature-card">
+                        <h3>Custom Packaging</h3>
+                        <p>Elegant cozy packaging for gifts and events.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Event Return Gifts</h3>
+                        <p>Mini crochet keepsakes and themed collections.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Bulk Bouquet Orders</h3>
+                        <p>Handmade bouquet roses and crochet flowers.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Campus & Stalls</h3>
+                        <p>Creative crochet stalls and cozy installations.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+  FAQ
+  ========================== -->
+
+    <section class="faq-section">
+
+        <div class="container">
+
+            <div class="section-heading fade-up">
+
+                <p class="eyebrow">
+                    FAQ
+                </p>
+
+                <h2>
+                    Cozy Questions & Answers
+                </h2>
+
+            </div>
+
+            <div class="faq-wrapper">
+
+                <div class="faq-item active">
+
+                    <button class="faq-question">
+                        Do you take custom crochet orders?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Yes! We love creating personalized handmade crochet pieces
+                            based on your ideas, colors and inspirations.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        How long does an order take?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Handmade creations take time, but we always try our best
+                            to deliver quickly while maintaining quality.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Do you take bulk orders?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Yes, we accept bulk orders for events,
+                            gifting, stalls and special occasions.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+  SOCIALS
+  ========================== -->
+
+    <section class="social-section">
+
+        <div class="container">
+
+            <div class="section-heading fade-up">
+
+                <p class="eyebrow">
+                    SOCIALS
+                </p>
+
+                <h2>
+                    Come Say Hi &
+                    Join Our Cozy Crochet World ✨
+                </h2>
+
+            </div>
+
+            <div class="social-grid">
+
+                <a href="#" class="social-card">
+                    📸 Instagram
+                </a>
+
+                <a href="#" class="social-card">
+                    📌 Pinterest
+                </a>
+
+                <a href="#" class="social-card">
+                    💬 WhatsApp
+                </a>
+
+                <a href="#" class="social-card">
+                    ✉️ Email
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+  FOOTER
+  ========================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div>
+
+                <h3>Whimsy & Weave</h3>
+
+                <p>
+                    Handmade crochet creations stitched with warmth,
+                    softness and love.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>Quick Links</h4>
+
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">About</a>
+
+            </div>
+
+            <div>
+
+                <h4>Instagram</h4>
+
+                <a href="#">
+                    @whimsy_and_weave
+                </a>
+
+            </div>
+
+            <div>
+
+                <h4>Newsletter</h4>
+
+                <input type="email" placeholder="Enter your email">
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="./js/modal.js"></script>
+    <script>
+
+        const faqItems =
+            document.querySelectorAll(".faq-item");
+        const API_BASE = ['8081', '8080', '5500'].includes(window.location.port)
+            ? 'http://127.0.0.1:5000'
+            : '';
+
+        faqItems.forEach(item => {
+
+            const btn =
+                item.querySelector(".faq-question");
+
+            btn.addEventListener("click", () => {
+
+                item.classList.toggle("active");
+
+            });
+
+        });
+
+        // Option cards button navigation & smooth scroll
+        document.querySelectorAll(".option-card").forEach(card => {
+            const btn = card.querySelector("button");
+            if (btn) {
+                btn.type = 'button';
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const headingText = card.querySelector("h3")?.textContent.trim() || "";
+                    const selectEl = document.getElementById("contactType");
+                    if (selectEl) {
+                        if (headingText.includes("Custom Orders")) {
+                            selectEl.value = "Custom Order";
+                        } else if (headingText.includes("Collaborations")) {
+                            selectEl.value = "Collaboration";
+                        } else if (headingText.includes("Stall Enquiries")) {
+                            selectEl.value = "Stall Invitation";
+                        } else if (headingText.includes("Bulk Orders")) {
+                            selectEl.value = "Bulk Order";
+                        } else if (headingText.includes("General Questions")) {
+                            selectEl.value = "Other";
+                        }
+                        selectEl.dispatchEvent(new Event("change"));
+                    }
+                    const targetSection = document.getElementById("contact-form");
+                    if (targetSection) {
+                        const offset = 90;
+                        const top = targetSection.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top, behavior: "smooth" });
+                    }
+                });
+            }
+        });
+        
+        /* ===================================
+           IMAGE UPLOAD FUNCTIONALITY
+        =================================== */
+
+        const uploadInput = document.getElementById('reference-upload');
+        const previewContainer = document.getElementById('preview-container');
+        const uploadLabel = document.querySelector('.upload-label');
+        const uploadBox = document.querySelector('.upload-box');
+        const uploadWrapper = document.querySelector('.upload-input-wrapper');
+        
+        // Track uploaded files
+        let uploadedFiles = new Map();
+
+        // Handle file selection from input
+        if (uploadInput) {
+            uploadInput.addEventListener('change', handleFileSelect);
+        }
+
+        // Handle drag and drop
+        if (uploadBox) {
+            uploadBox.addEventListener('dragover', handleDragOver);
+            uploadBox.addEventListener('dragleave', handleDragLeave);
+            uploadBox.addEventListener('drop', handleDrop);
+        }
+
+        // Click label to open file picker
+        if (uploadLabel) {
+            uploadLabel.addEventListener('click', (e) => {
+                if (!e.target.closest('.preview-remove')) {
+                    uploadInput.click();
+                }
+            });
+        }
+
+        // Prevent default drag behavior
+        document.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        document.addEventListener('drop', (e) => {
+            e.preventDefault();
+        });
+
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            processFiles(files);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadBox.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadBox.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadBox.classList.remove('drag-over');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                uploadInput.files = files;
+                processFiles(files);
+            }
+        }
+
+        function processFiles(files) {
+            if (!files || !files.length) return;
+
+            Array.from(files).forEach((file) => {
+                // Validate image file
+                if (!file.type.startsWith('image/')) return;
+
+                // Check file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    showMessage('File too large (max 5MB)', 'error');
+                    return;
+                }
+
+                const fileId = Date.now() + Math.random();
+                uploadedFiles.set(fileId, file);
+
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'preview-image-wrapper';
+                    wrapper.setAttribute('data-file-id', fileId);
+
+                    const img = document.createElement('img');
+                    img.className = 'preview-image';
+                    img.src = e.target.result;
+                    img.alt = file.name;
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'preview-remove';
+                    removeBtn.innerHTML = '✕';
+                    removeBtn.type = 'button';
+
+                    removeBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        removePreview(fileId, wrapper);
+                    });
+
+                    wrapper.appendChild(img);
+                    wrapper.appendChild(removeBtn);
+                    previewContainer.appendChild(wrapper);
+                };
+
+                reader.readAsDataURL(file);
+            });
+
+            showUploadSuccess();
+        }
+
+        function removePreview(fileId, element) {
+            uploadedFiles.delete(fileId);
+            element.remove();
+
+            if (uploadedFiles.size === 0) {
+                previewContainer.innerHTML = '';
+                const successMsg = document.querySelector('.upload-success');
+                if (successMsg) successMsg.remove();
+            }
+        }
+
+        function showUploadSuccess() {
+            const existingMsg = document.querySelector('.upload-success');
+            if (existingMsg) existingMsg.remove();
+
+            const successMsg = document.createElement('div');
+            successMsg.className = 'upload-success';
+            successMsg.innerHTML = `✨ ${uploadedFiles.size} image(s) ready to attach`;
+
+            uploadBox.appendChild(successMsg);
+
+            setTimeout(() => {
+                if (successMsg.parentElement) {
+                    successMsg.remove();
+                }
+            }, 3000);
+        }
+
+        function showMessage(text, type = 'info') {
+            if (typeof whimsyModal !== 'undefined') {
+                whimsyModal.toast(text, type === 'error' ? 'error' : type === 'success' ? 'success' : 'info');
+                return;
+            }
+            const msg = document.createElement('div');
+            msg.className = `upload-message upload-${type}`;
+            msg.textContent = text;
+            msg.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                background: ${type === 'error' ? '#ffd4cc' : '#d4edca'};
+                color: ${type === 'error' ? '#5a2116' : '#2d5016'};
+                font-weight: 500;
+                z-index: 10000;
+                animation: slideDown 0.4s ease-out;
+            `;
+
+            document.body.appendChild(msg);
+
+            setTimeout(() => {
+                msg.remove();
+            }, 3000);
+        }
+
+        async function submitContactForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const subject = document.getElementById('contactSubject').value.trim();
+            const enquiryType = document.getElementById('contactType').value;
+            const messageText = document.getElementById('contactMessage').value.trim();
+            const preferredContact = Array.from(form.querySelectorAll('input[name="preferredContact"]')).find(input => input.checked)?.value || 'Email';
+
+            if (!name || !email || !messageText) {
+                showMessage('Please fill the required fields', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/api/contact/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, phone, subject, enquiryType, message: messageText, preferredContact })
+                });
+
+                if (!res.ok) {
+                    const error = await res.json();
+                    throw new Error(error.message || 'Unable to send your message');
+                }
+
+                showMessage('Your message was sent successfully');
+                form.reset();
+                previewContainer.innerHTML = '';
+                uploadedFiles.clear();
+            } catch (err) {
+                console.error('Contact submit error', err);
+                const savedMessages = JSON.parse(localStorage.getItem('guestContactMessages') || '[]');
+                savedMessages.push({
+                    name,
+                    email,
+                    phone,
+                    subject,
+                    enquiryType,
+                    message: messageText,
+                    preferredContact,
+                    submittedAt: new Date().toISOString()
+                });
+                localStorage.setItem('guestContactMessages', JSON.stringify(savedMessages));
+                showMessage('Your message details are saved. We will contact you soon.', 'success');
+                form.reset();
+                previewContainer.innerHTML = '';
+                uploadedFiles.clear();
+            }
+        }
+
+        document.getElementById('contactForm')?.addEventListener('submit', submitContactForm);
+    </script>
+
+</body>
+
+</html>

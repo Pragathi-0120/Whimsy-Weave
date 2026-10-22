@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Demo Payment | Whimsy & Weave</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/payment.css">
+
+<style>
+    /* Hide payment boxes based on method */
+    .payment-box {
+        display: none !important;
+    }
+    
+    .payment-box.active {
+        display: block !important;
+    }
+    
+    /* Card payment conditional display */
+    #cardBox {
+        display: none !important;
+    }
+    
+    .method-btn[data-method="card"].active ~ #cardBox,
+    #cardBox.active {
+        display: block !important;
+    }
+
+    .demo-payment-notice {
+        margin: 1rem auto 0;
+        max-width: 760px;
+        padding: 0.85rem 1rem;
+        border: 1px solid #d7a96b;
+        border-radius: 12px;
+        background: #fff8e8;
+        color: #6f4e3f;
+        text-align: center;
+        font-weight: 600;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="bg-blob blob-1"></div>
+<div class="bg-blob blob-2"></div>
+<div class="grain"></div>
+
+<header class="site-header">
+
+<div class="container header-inner">
+
+<a href="index.html" class="brand">
+
+<div class="brand-badge">
+W
+</div>
+
+<div>
+<span>Whimsy & Weave</span>
+<small>Academic Project Checkout</small>
+</div>
+
+</a>
+
+<div class="secure-badge">
+🔒 Secure Payment
+</div>
+
+</div>
+
+</header>
+
+<section class="payment-hero">
+
+<div class="floating-yarn yarn-1"></div>
+<div class="floating-yarn yarn-2"></div>
+
+<div class="container">
+
+<p class="eyebrow">
+ACADEMIC PROJECT DEMO
+</p>
+
+
+<h1>Complete your payment</h1>
+
+<div class="demo-payment-notice">
+Academic demo only: no real money is charged and no card details are transmitted.
+</div>
+
+</div>
+
+</section>
+
+<section class="payment-layout">
+
+<div class="container payment-grid">
+
+<div class="payment-left">
+
+<div class="glass-card methods-card">
+
+<h2>
+Choose Payment Method
+</h2>
+
+<div class="methods-grid">
+
+<button class="method-btn active" data-method="upi">
+UPI
+</button>
+
+<button class="method-btn" data-method="card">
+Card
+</button>
+
+<button class="method-btn" data-method="bank">
+Net Banking
+</button>
+
+<button class="method-btn" data-method="wallet">
+Wallets
+</button>
+
+<button class="method-btn" data-method="cod">
+COD
+</button>
+
+</div>
+
+</div>
+
+<!-- UPI -->
+
+<div class="glass-card payment-box active" id="upiBox">
+
+<h3>
+UPI Payment
+</h3>
+
+<div class="upi-apps">
+
+<div class="upi-app active">
+GPay
+</div>
+
+<div class="upi-app">
+PhonePe
+</div>
+
+<div class="upi-app">
+Paytm
+</div>
+
+</div>
+
+<div class="input-group">
+
+<input type="text" id="upiId" placeholder=" ">
+
+<label>
+Enter UPI ID
+</label>
+
+</div>
+
+<div class="qr-box" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; background: #fffdfb; border: 1.5px dashed #ddb7a0; padding: 1.5rem; border-radius: 15px; margin: 1.5rem 0;">
+    <div style="font-weight: 600; color: #6f4e3f; font-size: 0.9rem; margin-bottom: 0.5rem;">Demo QR Preview</div>
+    <img id="upiQrCode" src="" alt="UPI Payment QR Code" style="width: 180px; height: 180px; display: none; box-shadow: 0 4px 15px rgba(111,78,63,0.1); border-radius: 10px; padding: 5px; background: white;">
+    <div class="qr-placeholder-spinner" style="width: 40px; height: 40px; border: 3px solid #f7e2d6; border-top-color: #c48b8b; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+    <span id="qrTimer" style="font-size: 0.8rem; color: #8a7366; margin-top: 0.25rem;">Generating demo QR preview...</span>
+</div>
+
+<button class="copy-btn">
+Copy UPI ID
+</button>
+
+</div>
+
+<!-- CARD -->
+
+<div class="glass-card payment-box" id="cardBox">
+
+<h3>
+Card Payment
+</h3>
+
+<div class="card-preview" id="cardPreview">
+
+<div class="card-chip"></div>
+
+<div class="card-number" id="previewNumber">
+#### #### #### ####
+</div>
+
+<div class="card-bottom">
+
+<div>
+<p>Card Holder</p>
+<span id="previewName">
+YOUR NAME
+</span>
+</div>
+
+<div>
+<p>Expires</p>
+<span id="previewExpiry">
+MM/YY
+</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<input type="text" id="cardName" placeholder=" ">
+
+<label>
+Card Holder Name
+</label>
+
+</div>
+
+<div class="input-group">
+
+<input type="text" id="cardNumber" maxlength="19" placeholder=" ">
+
+<label>
+Card Number
+</label>
+
+</div>
+
+<div class="double-input">
+
+<div class="input-group">
+
+<input type="text" id="expiry" maxlength="5" placeholder=" ">
+
+<label>
+Expiry
+</label>
+
+</div>
+
+<div class="input-group">
+
+<input type="password" id="cvv" maxlength="3" placeholder=" ">
+
+<label>
+CVV
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BANK -->
+
+<div class="glass-card payment-box" id="bankBox">
+
+<h3>
+Net Banking
+</h3>
+
+<select id="bankSelect">
+
+<option>Select Your Bank</option>
+
+<option>HDFC Bank</option>
+<option>ICICI Bank</option>
+<option>SBI</option>
+<option>Axis Bank</option>
+
+</select>
+
+</div>
+
+<!-- WALLET -->
+
+<div class="glass-card payment-box" id="walletBox">
+
+<h3>
+Wallet Payment
+</h3>
+
+<div class="wallet-grid">
+
+<button>Amazon Pay</button>
+<button>Mobikwik</button>
+<button>Freecharge</button>
+
+</div>
+
+</div>
+
+<!-- COD -->
+
+<div class="glass-card payment-box" id="codBox">
+
+<h3>
+Cash On Delivery
+</h3>
+
+<p>
+Pay when your cozy handmade treasures arrive ✨
+</p>
+
+</div>
+
+</div>
+
+<div class="payment-right">
+
+<div class="glass-card summary-card">
+
+<h2>
+Order Summary
+</h2>
+
+<div id="summaryItems"></div>
+
+<div class="summary-line">
+<span>Subtotal</span>
+<span id="subtotal">
+₹0
+</span>
+</div>
+
+<div class="summary-line">
+<span>Shipping</span>
+<span>
+₹99
+</span>
+</div>
+
+<div class="summary-line">
+<span>Tax</span>
+<span id="tax">
+₹0
+</span>
+</div>
+
+<div class="summary-line discount-line">
+<span>Discount</span>
+<span id="discount">
+- ₹0
+</span>
+</div>
+
+<div class="coupon-box">
+
+<input type="text" id="couponInput" placeholder="Enter Coupon">
+
+<button id="applyCoupon">
+Apply
+</button>
+
+</div>
+
+<div class="summary-total">
+
+<span>Total</span>
+
+<span id="finalTotal">
+₹0
+</span>
+
+</div>
+
+<button id="payBtn" class="pay-btn">
+Run Demo Payment
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SECURE GATEWAY SCANNER MODAL -->
+<div class="success-modal" id="scannerModal">
+    <div class="success-content" style="background: rgba(255, 255, 255, 0.96); -webkit-backdrop-filter: blur(25px); backdrop-filter: blur(25px); border: 1px solid rgba(111, 78, 63, 0.15); max-width: 460px; padding: 2.5rem; border-radius: 28px; position: relative; overflow: hidden; box-shadow: 0 25px 60px rgba(111, 78, 63, 0.18);">
+        
+        <!-- Animated Scanner Beam Box -->
+        <div class="scanner-container">
+            <!-- Radar Sonar circles -->
+            <div class="scanner-radar"></div>
+            <!-- Scanner Beam Line -->
+            <div class="scanner-beam"></div>
+            <!-- Lock or Shield Centerpiece -->
+            <div class="scanner-icon">🔒</div>
+        </div>
+        
+        <h2 style="font-family: 'Playfair Display', serif; color: #3d2f28; font-size: 1.8rem; margin-bottom: 0.5rem; letter-spacing: -0.5px;">Simulating Payment</h2>
+        <p style="color: #7d6c63; font-size: 0.9rem; margin-bottom: 1.5rem;">Running the academic project payment demonstration. No real transaction occurs.</p>
+        
+        <!-- Live Loading Status Bar -->
+        <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="scannerProgress"></div>
+        </div>
+
+        <div class="scanner-percent-text" id="scannerPercent">0%</div>
+
+        <!-- Terminal-style Log Entries -->
+        <div class="scanner-logs" id="scannerLogs">
+            <div class="log-entry"><span class="log-bullet">⚡</span> Gateway initialized...</div>
+        </div>
+    </div>
+</div>
+
+<div class="success-modal" id="successModal">
+
+<div class="success-content">
+
+<div class="success-check">
+✓
+</div>
+
+<h2>
+Payment Successful ✨
+</h2>
+
+<p>
+Your handmade treasures are on their way.
+</p>
+
+<div class="order-id" id="orderId">
+ORDER #WW1029
+</div>
+
+<div class="success-actions">
+
+<a href="product.html">
+Continue Shopping
+</a>
+
+<button id="trackOrderBtn">
+Track Order
+</button>
+
+<button id="downloadInvoice">
+Download Invoice
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="auth-modal" id="authModal">
+
+<div class="auth-popup">
+
+<h2>
+Login Required ✨
+</h2>
+
+<p>
+Please login or create an account to continue your cozy crochet checkout journey ✨
+</p>
+
+<div class="auth-buttons">
+
+<a href="login.html">
+Login
+</a>
+
+<a href="signup.html">
+Signup
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="js/modal.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/payment.js"></script>
+
+</body>
+</html>

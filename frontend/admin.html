@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Whimsy & Weave</title>
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+                <button class="toggle-sidebar" onclick="toggleSidebar()">Menu</button>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#dashboard" class="nav-link active" onclick="navigateTo('dashboard', event)">Dashboard</a></li>
+                <li><a href="#products" class="nav-link" onclick="navigateTo('products', event)">Products</a></li>
+                <li><a href="#orders" class="nav-link" onclick="navigateTo('orders', event)">Orders</a></li>
+                <li><a href="#custom-orders" class="nav-link" onclick="navigateTo('custom-orders', event)">Custom Orders</a></li>
+                <li><a href="#workshops" class="nav-link" onclick="navigateTo('workshops', event)">Workshops</a></li>
+                <li><a href="#reviews" class="nav-link" onclick="navigateTo('reviews', event)">Reviews</a></li>
+                <li><a href="#users" class="nav-link" onclick="navigateTo('users', event)">Users</a></li>
+                <li><a href="#subscribers" class="nav-link" onclick="navigateTo('subscribers', event)">Subscribers</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </nav>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 id="page-title">Admin Dashboard</h1>
+                <div class="header-actions">
+                    <span id="admin-name">Admin</span>
+                    <div class="user-menu">
+                        <div class="user-avatar admin-avatar-text">A</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <section id="dashboard-section" class="section active">
+                    <div class="dashboard-grid">
+                        <div class="stat-card"><h3>Total Users</h3><p class="stat-number" id="stat-users">0</p></div>
+                        <div class="stat-card"><h3>Total Products</h3><p class="stat-number" id="stat-products">0</p></div>
+                        <div class="stat-card"><h3>Total Orders</h3><p class="stat-number" id="stat-orders">0</p></div>
+                        <div class="stat-card"><h3>Total Reviews</h3><p class="stat-number" id="stat-reviews">0</p></div>
+                        <div class="stat-card"><h3>Total Revenue</h3><p class="stat-number" id="stat-revenue">Rs. 0</p></div>
+                        <div class="stat-card"><h3>Custom Orders</h3><p class="stat-number" id="stat-custom">0</p></div>
+                        <div class="stat-card"><h3>Workshops</h3><p class="stat-number" id="stat-workshops">0</p></div>
+                        <div class="stat-card"><h3>Subscribers</h3><p class="stat-number" id="stat-subscribers">0</p></div>
+                    </div>
+
+                    <h2>Recent Orders</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Order ID</th><th>Customer</th><th>Amount</th><th>Status</th><th>Tracking</th><th>Date</th></tr>
+                        </thead>
+                        <tbody id="recent-orders-body"><tr><td colspan="6">Loading...</td></tr></tbody>
+                    </table>
+                </section>
+
+                <section id="products-section" class="section">
+                    <div class="section-header">
+                        <h2>Products Management</h2>
+                        <button class="btn btn-primary" onclick="openAddProductForm()">Add Product</button>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" id="product-search" placeholder="Search products..." onkeyup="searchProducts()">
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Featured</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="products-body"><tr><td colspan="7">Loading products...</td></tr></tbody>
+                    </table>
+                </section>
+
+                <section id="orders-section" class="section">
+                    <h2>Orders Management</h2>
+                    <div class="filter-bar">
+                        <select id="order-status-filter" onchange="loadOrders()">
+                            <option value="">All Orders</option>
+                            <option value="Order Confirmed">Order Confirmed</option>
+                            <option value="Preparing Your Cozy Package">Preparing</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Out for Delivery">Out for Delivery</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Customer</th><th>Total</th><th>Status</th><th>Payment</th><th>Tracking</th><th>Date</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="orders-body"><tr><td colspan="8">Loading orders...</td></tr></tbody>
+                    </table>
+                </section>
+
+                <section id="custom-orders-section" class="section">
+                    <h2>Custom Orders</h2>
+                    <div class="filter-bar">
+                        <select id="custom-status-filter" onchange="filterCustomOrders()">
+                            <option value="">All Custom Orders</option>
+                            <option value="pending">Pending</option>
+                            <option value="reviewing">Reviewing</option>
+                            <option value="quoted">Quoted</option>
+                            <option value="approved">Approved</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Customer</th><th>Type</th><th>Status</th><th>Final Price</th><th>Created</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="custom-orders-body"><tr><td colspan="7">Loading custom orders...</td></tr></tbody>
+                    </table>
+                </section>
+
+                <section id="workshops-section" class="section">
+                    <h2>Workshop Registrations</h2>
+                    <div class="filter-bar">
+                        <select id="workshop-status-filter" onchange="filterWorkshops()">
+                            <option value="">All Registrations</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Workshop</th><th>User</th><th>Payment</th><th>Status</th><th>Created</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="workshops-body"><tr><td colspan="7">Loading workshops...</td></tr></tbody>
+                    </table>
+                </section>
+
+                <section id="reviews-section" class="section">
+                    <h2>Reviews Management</h2>
+                    <div class="filter-bar">
+                        <select id="review-rating-filter" onchange="filterReviews()">
+                            <option value="">All Ratings</option>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="2">2 Stars</option>
+                            <option value="1">1 Star</option>
+                        </select>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Product</th><th>Customer</th><th>Rating</th><th>Comment</th><th>Date</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="reviews-body"><tr><td colspan="7">Loading reviews...</td></tr></tbody>
+                    </table>
+                </section>
+
+                <section id="users-section" class="section">
+                    <h2>Users Management</h2>
+                    <div class="search-bar">
+                        <input type="text" id="user-search" placeholder="Search users..." onkeyup="searchUsers()">
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Created</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="users-body"><tr><td colspan="7">Loading users...</td></tr></tbody>
+                    </table>
+                </section>
+
+                <section id="subscribers-section" class="section">
+                    <h2>Newsletter Subscribers</h2>
+                    <div class="search-bar">
+                        <input type="text" id="subscriber-search" placeholder="Search subscribers..." onkeyup="searchSubscribers()">
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Email</th><th>Name</th><th>Source</th><th>Confirmed</th><th>Created</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="subscribers-body"><tr><td colspan="7">Loading subscribers...</td></tr></tbody>
+                    </table>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="product-modal-title">Add Product</h2>
+                <button class="close-btn" onclick="closeProductModal()">&times;</button>
+            </div>
+            <form id="productForm" onsubmit="saveProduct(event)">
+                <div class="form-group"><label>Product Name *</label><input type="text" id="product-name" required></div>
+                <div class="form-group"><label>Description *</label><textarea id="product-description" rows="4" required></textarea></div>
+                <div class="form-group"><label>Image URL</label><input type="url" id="product-image" placeholder="https://..."></div>
+                <div class="form-row">
+                    <div class="form-group"><label>Price *</label><input type="number" id="product-price" step="0.01" min="0" required></div>
+                    <div class="form-group"><label>Stock Quantity</label><input type="number" id="product-quantity" min="0" value="0"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="product-category" required>
+                            <option value="">Select Category</option>
+                            <option value="bouquets">Bouquets</option>
+                            <option value="bouquet blankets">Bouquet Blankets</option>
+                            <option value="plushies">Plushies</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="hair accessories">Hair Accessories</option>
+                            <option value="wearables">Wearables</option>
+                            <option value="kids">Kids</option>
+                            <option value="car-accessories">Car Accessories</option>
+                            <option value="gifts">Gifts</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Tags</label><input type="text" id="product-tags" placeholder="comma, separated, tags"></div>
+                </div>
+                <div class="form-group">
+                    <label><input type="checkbox" id="product-featured"> Featured product</label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Order Details</h2>
+                <button class="close-btn" onclick="closeOrderModal()">&times;</button>
+            </div>
+            <div id="orderDetails">Loading...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeOrderModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="customOrderModal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Custom Order Details</h2>
+                <button class="close-btn" onclick="closeCustomOrderModal()">&times;</button>
+            </div>
+            <div id="customOrderDetails">Loading...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeCustomOrderModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="workshopModal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Workshop Registration Details</h2>
+                <button class="close-btn" onclick="closeWorkshopModal()">&times;</button>
+            </div>
+            <div id="workshopDetails">Loading...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeWorkshopModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notificationToast" class="notification-toast"></div>
+    <script src="./js/admin.js"></script>
+</body>
+</html>

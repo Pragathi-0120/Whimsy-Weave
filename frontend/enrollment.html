@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Workshop Enrollment | Whimsy & Weave
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="./css/enrollment.css">
+
+<style>
+    .enrollment-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .enrollment-modal.active {
+        display: flex;
+    }
+    
+    .enrollment-modal-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        max-width: 400px;
+        animation: slideUp 0.3s ease;
+    }
+    
+    .enrollment-check {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .enrollment-modal.error .enrollment-check {
+        font-size: 2.5rem;
+    }
+    
+    @keyframes slideUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="bg-blur blur-1"></div>
+<div class="bg-blur blur-2"></div>
+
+<div class="grain"></div>
+
+<section class="enrollment-page">
+
+<div class="container">
+
+<div class="page-heading">
+
+<p class="eyebrow">
+Whimsy & Weave Workshops
+</p>
+
+<h1>
+Enroll Into Your Crochet Journey ✨
+</h1>
+
+<p>
+Reserve your cozy creative spot and begin your handmade crochet adventure.
+</p>
+
+</div>
+
+<div class="enrollment-layout">
+
+<div class="workshop-card"
+id="workshopContainer">
+
+</div>
+
+<div class="payment-summary">
+
+    <h2>Payment Summary</h2>
+
+    <div class="summary-row">
+        <span>Workshop Fee</span>
+        <span id="subtotal">₹0</span>
+    </div>
+
+    <div class="summary-row">
+        <span>Taxes</span>
+        <span id="tax">₹0</span>
+    </div>
+
+    <div class="summary-row total-row">
+        <span>Total</span>
+        <span id="total">₹0</span>
+    </div>
+
+    <div class="payment-methods">
+
+        <label>
+            <input type="radio" name="payment" value="upi" checked>
+            UPI
+        </label>
+
+        <label>
+            <input type="radio" name="payment" value="gpay">
+            GPay
+        </label>
+
+        <label>
+            <input type="radio" name="payment" value="phonepe">
+            PhonePe
+        </label>
+
+        <label>
+            <input type="radio" name="payment" value="paytm">
+            Paytm
+        </label>
+
+    </div>
+
+    <button class="pay-btn">
+        Proceed To Payment
+    </button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="./js/modal.js"></script>
+<script>
+
+    /* ===================================
+       WORKSHOP ENROLLMENT PAGE
+    =================================== */
+
+    const API_BASE = ['8081', '8080', '5500'].includes(window.location.port)
+        ? 'http://127.0.0.1:5000'
+        : '';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        renderWorkshopDetails();
+        setupPaymentSummary();
+    });
+
+    function renderWorkshopDetails() {
+        // Get workshop data from localStorage
+        const workshopJSON = localStorage.getItem('selectedWorkshop');
+        
+        if (!workshopJSON) {
+            // No workshop data, redirect back
+            window.location.href = 'workshop.html';
+            return;
+        }
+
+        const workshop = JSON.parse(workshopJSON);
+        const container = document.getElementById('workshopContainer');
+
+        if (!container) return;
+
+        // Validate workshop data
+        if (!workshop.title || !workshop.price) {
+            console.error('Invalid workshop data:', workshop);
+            window.location.href = 'workshop.html';
+            return;
+        }
+
+        // Process image path - ensure it's correct
+        let imagePath = workshop.image || '';
+        
+        // Handle various image path formats
+        if (imagePath && !imagePath.startsWith('http')) {
+            // If it's a relative path, ensure it starts with ./img/images/
+            if (imagePath.includes('assets/images')) {
+                imagePath = imagePath.replace('assets/images', './img/images');
+            } else if (!imagePath.includes('./img/images') && !imagePath.includes('../img')) {
+                // Assume it's a filename and prepend the correct path
+                const fileName = imagePath.split('/').pop();
+                imagePath = `./img/images/${fileName}`;
+            }
+        }
+
+        console.log('Workshop data loaded:', workshop);
+        console.log('Image path:', imagePath);
+
+        // Create workshop display card
+        const workshopHTML = `
+            <div class="workshop-detail">
+                <div class="detail-image" style="background-image: url('${imagePath}')" 
+                     data-fallback="./img/images/workshop.jpg">
+                    <div class="image-error-fallback" style="display:none;">📸</div>
+                </div>
+                
+                <div class="detail-content">
+                    <div class="detail-header">
+                        <span class="detail-level">${workshop.level || 'Workshop'}</span>
+                        <h2>${workshop.title}</h2>
+                    </div>
+
+                    <div class="detail-meta">
+                        <div class="meta-item">
+                            <span class="meta-icon">⏰</span>
+                            <span>${workshop.duration || 'Duration TBA'}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">📅</span>
+                            <span>${workshop.timing || 'Timing TBA'}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">👩‍🏫</span>
+                            <span>${workshop.instructor || 'Instructor TBA'}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">🎟</span>
+                            <span>${workshop.seats || 'Seats TBA'}</span>
+                        </div>
+                    </div>
+
+                    <p class="detail-description">
+                        ${workshop.description || 'Learn more about this amazing workshop!'}
+                    </p>
+
+                    <form class="enrollment-form">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="name" placeholder="Your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Experience Level *</label>
+                            <select name="experienceLevel" required>
+                                <option value="">Select your level</option>
+                                <option value="beginner">Beginner - Never crocheted before</option>
+                                <option value="intermediate">Intermediate - Some experience</option>
+                                <option value="advanced">Advanced - Experienced crocheter</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full">
+                            <label>Any Special Requirements? (Optional)</label>
+                            <textarea name="specialRequirements" placeholder="Let us know if you have any special needs or questions..."></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        `;
+
+        container.innerHTML = workshopHTML;
+
+        // Update page title with workshop name
+        document.title = `Enroll: ${workshop.title} | Whimsy & Weave`;
+
+        // Set up image error handling and fallback
+        setupImageFallback();
+
+        // Update payment summary
+        updatePaymentAmount(workshop.price);
+    }
+
+    function setupImageFallback() {
+        const detailImage = document.querySelector('.detail-image');
+        if (!detailImage) return;
+
+        // Check if image loaded successfully using image verification
+        const testImg = new Image();
+        const currentBg = window.getComputedStyle(detailImage).backgroundImage;
+        
+        // Extract URL from background-image property
+        const urlMatch = currentBg.match(/url\(['"]?([^'"]+)['"]?\)/);
+        const imagePath = urlMatch ? urlMatch[1] : '';
+
+        console.log('Checking image:', imagePath);
+
+        testImg.onload = function() {
+            console.log('Image loaded successfully:', imagePath);
+        };
+
+        testImg.onerror = function() {
+            console.warn('Image failed to load:', imagePath);
+            // Try fallback image
+            const fallbackPath = detailImage.getAttribute('data-fallback') || './img/images/workshop.jpg';
+            console.log('Trying fallback image:', fallbackPath);
+            
+            detailImage.style.backgroundImage = `url('${fallbackPath}')`;
+            detailImage.classList.add('image-error');
+            
+            // Show error indicator
+            const errorSpan = detailImage.querySelector('.image-error-fallback');
+            if (errorSpan) {
+                errorSpan.style.display = 'flex';
+            }
+        };
+
+        // Test the image
+        if (imagePath) {
+            testImg.src = imagePath;
+        } else {
+            console.warn('No image path found');
+            // Use fallback
+            const fallbackPath = detailImage.getAttribute('data-fallback') || './img/images/workshop.jpg';
+            detailImage.style.backgroundImage = `url('${fallbackPath}')`;
+        }
+    }
+
+    function setupPaymentSummary() {
+        const payBtn = document.querySelector('.pay-btn');
+        
+        if (payBtn) {
+            payBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                const form = document.querySelector('.enrollment-form');
+                if (form && !form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                const workshopJSON = localStorage.getItem('selectedWorkshop');
+                const workshop = JSON.parse(workshopJSON || '{}');
+                if (!workshop || !workshop.id) {
+                    whimsyModal.error('Enrollment Error', 'Unable to determine workshop selection. Please try again.');
+                    return;
+                }
+
+                const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'upi';
+                const formData = new FormData(form);
+
+                const enrollmentData = {
+                    workshop: workshop,
+                    enrolledAt: new Date().toISOString(),
+                    status: 'pending_payment'
+                };
+
+                localStorage.setItem('enrollmentData', JSON.stringify(enrollmentData));
+
+                payBtn.disabled = true;
+                const originalText = payBtn.textContent;
+                payBtn.textContent = 'Confirming Enrollment...';
+
+                try {
+                    const total = Number(document.getElementById('total')?.textContent.replace(/[^0-9.]/g, '')) || workshop.price;
+                    const res = await fetch(`${API_BASE}/api/workshops/enroll`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            workshop,
+                            amount: total,
+                            paymentMethod,
+                            student: {
+                                name: formData.get('name'),
+                                email: formData.get('email'),
+                                phone: formData.get('phone'),
+                                experienceLevel: formData.get('experienceLevel'),
+                                specialRequirements: formData.get('specialRequirements')
+                            }
+                        })
+                    });
+                    const json = await res.json();
+                    if (!res.ok) {
+                        throw new Error(json.message || 'Unable to complete enrollment. Please try again.');
+                    }
+                    
+                    localStorage.setItem('enrollmentData', JSON.stringify({
+                        ...enrollmentData,
+                        status: 'confirmed',
+                        enrollmentId: json.enrollmentId
+                    }));
+                    
+                    whimsyModal.success(
+                        'Welcome to Your Workshop! ✨',
+                        'Thank you for joining our workshop! A confirmation email has been sent to your inbox with all the details. You\'ll receive all course updates and workshop details there. Happy learning and happy crocheting!',
+                        {
+                            primaryBtn: {
+                                text: 'Return to Workshops',
+                                callback: () => window.location.href = 'workshop.html'
+                            }
+                        }
+                    );
+                    form.reset();
+                } catch (err) {
+                    console.error('Enrollment registration error', err);
+                    const savedEnrollments = JSON.parse(localStorage.getItem('guestWorkshopEnrollments') || '[]');
+                    savedEnrollments.push({
+                        ...enrollmentData,
+                        status: 'confirmed_guest',
+                        paymentMethod,
+                        student: {
+                            name: formData.get('name'),
+                            email: formData.get('email'),
+                            phone: formData.get('phone'),
+                            experienceLevel: formData.get('experienceLevel'),
+                            specialRequirements: formData.get('specialRequirements')
+                        }
+                    });
+                    localStorage.setItem('guestWorkshopEnrollments', JSON.stringify(savedEnrollments));
+
+                    whimsyModal.success(
+                        'Enrollment Saved! ✨',
+                        'Your workshop enrollment details are saved. We will contact you with payment and class details.',
+                        {
+                            primaryBtn: {
+                                text: 'Return to Workshops',
+                                callback: () => window.location.href = 'workshop.html'
+                            }
+                        }
+                    );
+                    form.reset();
+                } finally {
+                    payBtn.disabled = false;
+                    payBtn.textContent = originalText;
+                }
+            });
+        }
+    }
+
+    function updatePaymentAmount(price) {
+        const subtotalEl = document.getElementById('subtotal');
+        const taxEl = document.getElementById('tax');
+        const totalEl = document.getElementById('total');
+
+        if (subtotalEl) {
+            subtotalEl.textContent = `₹${price}`;
+        }
+
+        // Calculate tax (18% GST for India)
+        const tax = Math.round(price * 0.18);
+        if (taxEl) {
+            taxEl.textContent = `₹${tax}`;
+        }
+
+        const total = price + tax;
+        if (totalEl) {
+            totalEl.textContent = `₹${total}`;
+        }
+    }
+
+</script>

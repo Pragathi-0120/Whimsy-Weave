@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title description">
+  <title id="title">Whimsy and Weave product placeholder</title>
+  <description id="description">A soft neutral placeholder for a handmade crochet product image.</description>
+  <rect width="800" height="600" fill="#f8eee8"/>
+  <circle cx="400" cy="265" r="120" fill="#dfb8a7"/>
+  <path d="M310 275c45-95 135-95 180 0-45 95-135 95-180 0Z" fill="#fff8f3"/>
+  <path d="M400 145v240M280 265h240M330 195l140 140M470 195 330 335" stroke="#b87970" stroke-width="18" stroke-linecap="round" opacity=".72"/>
+  <text x="400" y="475" text-anchor="middle" fill="#6f4e3f" font-family="Georgia, serif" font-size="38">Whimsy &amp; Weave</text>
+  <text x="400" y="520" text-anchor="middle" fill="#8a7366" font-family="Arial, sans-serif" font-size="22">Handmade with care</text>
+</svg>

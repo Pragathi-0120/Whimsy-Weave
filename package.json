@@ -1,0 +1,14 @@
+{
+  "name": "whimsy",
+  "version": "1.0.0",
+
+  "main": "backend/app.py",
+
+  "scripts": {
+    "start": "node scripts/start-backend.js",
+    "dev": "node scripts/start-backend.js",
+    "frontend": "node frontend/static-server.js"
+  },
+
+  "dependencies": {}
+}

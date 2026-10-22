@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Signup | Whimsy & Weave</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/signup.css">
+
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="grain"></div>
+
+    <!-- MAIN -->
+
+    <main class="signup-layout">
+
+        <!-- LEFT SIDE -->
+
+        <section class="showcase">
+
+            <div class="floating-yarn yarn-1"></div>
+            <div class="floating-yarn yarn-2"></div>
+            <div class="floating-heart"></div>
+
+            <div class="showcase-content fade-up">
+
+                <p class="eyebrow">
+                    WHIMSY & WEAVE
+                </p>
+
+                <h1>
+                    Join The Cozy
+                    Crochet Family ✨
+                </h1>
+
+                <p>
+                    Create your account and step into a dreamy world filled with handmade magic,
+                    creativity and warmth.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- RIGHT SIDE -->
+
+        <section class="signup-side">
+
+            <div class="signup-card fade-up">
+
+                <div class="card-header">
+
+                    <h2>Create Account</h2>
+
+                    <p>
+                        Start your cozy handmade journey today.
+                    </p>
+
+                </div>
+
+                <!-- FORM -->
+
+                <form id="signupForm">
+
+                    <div class="input-group">
+
+                        <input type="text" id="fullname" required>
+
+                        <label>Full Name</label>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="text" id="username" required>
+
+                        <label>Username</label>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="email" id="email" required>
+
+                        <label>Email Address</label>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="tel" id="phone" required>
+
+                        <label>Phone Number</label>
+
+                    </div>
+
+                    <div class="input-group password-group">
+
+                        <input type="password" id="password" required>
+
+                        <label>Password</label>
+
+                        <span class="toggle-password">
+                            👁
+                        </span>
+
+                    </div>
+
+                    <div class="password-helper">
+                        Must contain 8+ characters
+                    </div>
+
+                    <div class="strength">
+
+                        <div class="strength-bar"></div>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="password" id="confirmPassword" required>
+
+                        <label>Confirm Password</label>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="date" id="dob" required>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <select id="gender">
+
+                            <option value="">Select Gender</option>
+
+                            <option>Female</option>
+                            <option>Male</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- CHECKBOX -->
+
+                    <div class="checkbox-group">
+
+                        <label class="checkbox">
+
+                            <input type="checkbox" id="terms" required>
+
+                            I agree to Terms & Conditions
+
+                        </label>
+
+                        <label class="checkbox">
+
+                            <input type="checkbox">
+
+                            Subscribe to cozy updates
+
+                        </label>
+
+                    </div>
+
+                    <!-- BUTTON -->
+
+                    <button type="submit" class="main-btn">
+
+                        Create Account
+
+                    </button>
+
+                    <div class="divider">
+                        OR
+                    </div>
+
+                    <button type="button" class="social-btn">
+
+                        Continue with Google
+
+                    </button>
+
+                    <button type="button" class="social-btn instagram">
+
+                        Continue with Instagram
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- SUCCESS MODAL -->
+
+    <div class="success-modal" id="successModal">
+
+        <div class="success-card">
+
+            <div class="checkmark">
+                ✓
+            </div>
+
+            <h2>
+                Account Created ✨
+            </h2>
+
+            <p>
+                Your cozy crochet account has been created successfully ✨
+            </p>
+
+            <button class="main-btn" id="continueBtn">
+                Continue
+            </button>
+
+            <button class="resend-btn">
+                Resend Verification Email
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- TOAST -->
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/signup.js"></script>
+
+</body>
+
+</html>

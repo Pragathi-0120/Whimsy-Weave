@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking | Whimsy & Weave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/cart.css">
+    <style>
+        .tracking-shell{max-width:920px;margin:0 auto;padding:5rem 5%}
+        .tracking-card{background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-radius:20px;padding:3rem;box-shadow:0 10px 30px rgba(0,0,0,.08);border:1px solid rgba(255,255,255,.6)}
+        .tracking-meta{display:flex;flex-wrap:wrap;gap:1rem;margin:1.5rem 0 2.5rem;color:var(--stone)}
+        .tracking-pill{background:linear-gradient(135deg,#f5e6e6 0%,#ffe6f0 100%);border-radius:50px;padding:.8rem 1.5rem;font-weight:600;color:#333}
+        .tracking-list{display:grid;gap:2rem;margin:2rem 0}
+        .tracking-step{display:flex;gap:1.5rem;padding:1.5rem;border-radius:12px;background:white;border:2px solid #f0f0f0;position:relative;transition:all .3s}
+        .tracking-step.complete{border-color:#d4a5a5}
+        .tracking-step.active{border-color:#d4a5a5;background:rgba(212,165,165,.05)}
+        .tracking-step.active .tracking-dot{animation:pulse 2s infinite}
+        .tracking-dot{width:50px;height:50px;border-radius:50%;border:3px solid #ddd;background:white;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex:0 0 auto;transition:all .3s}
+        .tracking-step.complete .tracking-dot{background:linear-gradient(135deg,#d4a5a5,#c48b8b);border-color:#c48b8b}
+        .tracking-step.active .tracking-dot{background:linear-gradient(135deg,#d4a5a5,#c48b8b);border-color:#c48b8b;box-shadow:0 0 0 8px rgba(212,165,165,.1)}
+        .tracking-content h3{margin:0 0 .5rem;color:#333;font-weight:600}
+        .tracking-content p{margin:0;color:#666;font-size:.95rem;line-height:1.5}
+        .tracking-content .tracking-date{color:#999;font-size:.9rem;margin-top:.5rem}
+        .tracking-actions{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap}
+        .tracking-actions a,.tracking-actions button{border-radius:12px;padding:1rem 1.5rem;text-decoration:none;background:linear-gradient(135deg,#d4a5a5,#c48b8b);color:white;font-weight:600;border:none;cursor:pointer;transition:all .3s}
+        .tracking-actions a:hover,.tracking-actions button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(212,165,165,.4)}
+        .tracking-actions .secondary{background:#f5f5f5;color:#333}
+        .tracking-actions .secondary:hover{background:#eee}
+        .tracking-error{color:#c85a54;font-weight:700}
+        .tracking-status-badge{display:inline-block;padding:.5rem 1.5rem;background:linear-gradient(135deg,#d4f1d4 0%,#e8f5e8 100%);border-radius:50px;color:#2d5016;font-weight:600;margin-bottom:1rem}
+        .tracking-status-badge.in-progress{background:linear-gradient(135deg,#fff3d4 0%,#fffae8 100%);color:#7a5a0a}
+        @keyframes pulse{0%{box-shadow:0 0 0 8px rgba(212,165,165,.1)}50%{box-shadow:0 0 0 12px rgba(212,165,165,.05)}100%{box-shadow:0 0 0 8px rgba(212,165,165,.1)}}
+        @media(max-width:600px){.tracking-card{padding:2rem}.tracking-shell{padding:3rem 5%}.tracking-step{flex-direction:column}.tracking-dot{width:40px;height:40px}}
+    </style>
+</head>
+
+<body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="grain"></div>
+
+    <header class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="brand">
+                <div class="brand-badge"><img src="./img/images/logo.jpg" alt="Whimsy & Weave Logo"></div>
+                <div><span class="brand-name">Whimsy &amp; Weave</span><small>A little whimsy in every weave</small></div>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="workshop.html">Workshops</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="cart-hero">
+        <div class="floating-yarn yarn-1"></div>
+        <div class="floating-yarn yarn-2"></div>
+        <div class="floating-heart"></div>
+        <div class="hero-content">
+            <p class="eyebrow">ORDER TRACKING</p>
+            <h1>Your Cozy Package Journey</h1>
+            <p>Follow each handmade step from confirmation to delivery.</p>
+        </div>
+    </section>
+
+    <main class="tracking-shell">
+        <div class="tracking-card">
+            <p class="eyebrow">TRACKING STATUS</p>
+            <h2 id="trackingTitle">Loading your order...</h2>
+            <div class="tracking-status-badge" id="statusBadge"></div>
+            <div class="tracking-meta" id="trackingMeta"></div>
+            <div class="tracking-list" id="trackingList"></div>
+            <p class="tracking-error" id="trackingError"></p>
+            <div class="tracking-actions">
+                <a href="product.html">Continue Shopping</a>
+                <button class="secondary" onclick="downloadInvoice()">Download Invoice</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="./js/modal.js"></script>
+    <script>
+        const API_BASE = ['8081', '8080', '5500'].includes(window.location.port)
+            ? 'http://127.0.0.1:5000'
+            : '';
+
+        const TRACKING_STATUSES = [
+            {
+                status: 'Order Confirmed',
+                icon: '✓',
+                description: 'Your order has been confirmed and we\'re getting it ready for shipment.',
+                daysAfterOrder: 0
+            },
+            {
+                status: 'Preparing Your Cozy Package',
+                icon: '📦',
+                description: 'Our artisans are carefully preparing and packing your handmade treasures.',
+                daysAfterOrder: 2
+            },
+            {
+                status: 'Shipped',
+                icon: '🚚',
+                description: 'Your package is on its way! You\'re getting closer to your cozy creations.',
+                daysAfterOrder: 3
+            },
+            {
+                status: 'Out for Delivery',
+                icon: '📍',
+                description: 'Your package is out for delivery today. Keep an eye on your doorstep!',
+                daysAfterOrder: 5
+            },
+            {
+                status: 'Delivered',
+                icon: '🎉',
+                description: 'Your cozy treasures have arrived! We hope you love them.',
+                daysAfterOrder: 6
+            }
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        const orderId = params.get('order') || params.get('orderId') || 'WW' + Math.floor(Math.random() * 9999);
+        const trackingNumber = params.get('tracking');
+        const currentStatusParam = params.get('status') ? decodeURIComponent(params.get('status')) : null;
+
+        const title = document.getElementById('trackingTitle');
+        const meta = document.getElementById('trackingMeta');
+        const list = document.getElementById('trackingList');
+        const error = document.getElementById('trackingError');
+        const badge = document.getElementById('statusBadge');
+
+        async function fetchTrackingData() {
+            if (!trackingNumber) return null;
+            try {
+                const res = await fetch(`${API_BASE}/api/orders/tracking/${encodeURIComponent(trackingNumber)}`);
+                if (!res.ok) return null;
+                const json = await res.json();
+                return json.success ? json.tracking : null;
+            } catch (err) {
+                console.warn('Tracking fetch failed', err);
+                return null;
+            }
+        }
+
+        function getCurrentStatus() {
+            if (currentStatusParam) {
+                return currentStatusParam;
+            }
+            return TRACKING_STATUSES[0].status;
+        }
+
+        function buildFallbackStatus() {
+            const daysElapsed = Math.floor(Math.random() * 7);
+            for (let i = TRACKING_STATUSES.length - 1; i >= 0; i--) {
+                if (daysElapsed >= TRACKING_STATUSES[i].daysAfterOrder) {
+                    return TRACKING_STATUSES[i].status;
+                }
+            }
+            return TRACKING_STATUSES[0].status;
+        }
+
+        async function loadTracking() {
+            const trackingData = await fetchTrackingData();
+            const currentStatus = trackingData?.currentStatus || getCurrentStatus() || buildFallbackStatus();
+            title.textContent = `Your Cozy Package is On The Way ✨`;
+
+            const isDelivered = currentStatus === TRACKING_STATUSES[TRACKING_STATUSES.length - 1].status;
+            badge.className = isDelivered ? 'tracking-status-badge' : 'tracking-status-badge in-progress';
+            badge.innerHTML = isDelivered ? '✓ Delivered' : currentStatus;
+
+            const createdAt = trackingData?.createdAt ? new Date(trackingData.createdAt) : new Date();
+            const estimatedDelivery = trackingData?.estimatedDelivery ? new Date(trackingData.estimatedDelivery) : new Date(createdAt.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+            meta.innerHTML = `
+                <span class="tracking-pill">Order #${trackingData?.orderId || orderId}</span>
+                <span class="tracking-pill">${createdAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                <span class="tracking-pill">Est. Delivery: ${estimatedDelivery.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+            `;
+
+            if (!trackingData) {
+                error.textContent = 'Unable to load real-time tracking from the order system. Showing an estimated progress update instead.';
+            }
+
+            let currentStatusFound = false;
+            list.innerHTML = TRACKING_STATUSES.map((item) => {
+                const isCompleted = !currentStatusFound && item.status !== currentStatus;
+                const isActive = item.status === currentStatus && !currentStatusFound;
+
+                if (item.status === currentStatus) {
+                    currentStatusFound = true;
+                }
+
+                const stepDate = new Date(createdAt);
+                stepDate.setDate(stepDate.getDate() + item.daysAfterOrder);
+
+                return `
+                    <div class="tracking-step ${isCompleted ? 'complete' : isActive ? 'active' : ''}">
+                        <span class="tracking-dot">${item.icon}</span>
+                        <div class="tracking-content">
+                            <h3>${item.status}</h3>
+                            <p>${item.description}</p>
+                            <span class="tracking-date">${stepDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function downloadInvoice() {
+            if (typeof whimsyModal !== 'undefined') {
+                whimsyModal.toast('Invoice downloaded! 📄', 'success');
+            }
+            window.print();
+        }
+
+        loadTracking();
+    </script>
+</body>
+
+</html>

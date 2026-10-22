@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Orders | Whimsy & Weave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./css/custom-order.css" />
+</head>
+
+<body class="custom-order-page">
+    <header class="site-header simple-header">
+        <div class="container header-inner">
+            <a class="brand-link" href="index.html">
+                <div class="brand-badge">
+    <img src="./img/images/logo.jpg" alt="Whimsy & Weave Logo">
+</div>
+                
+                <div>
+                    <span class="brand-label">Whimsy &amp; Weave</span>
+                    <small>A  little whimsy  in every weave</small>
+                </div>
+            </a>
+            </a>
+            <a class="button button-primary" href="index.html">Back to home</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="custom-order-hero">
+            <div class="container custom-order-inner">
+                <div class="custom-order-copy fade-up">
+                    <p class="eyebrow">Create your dream piece</p>
+                    <h1>Custom crochet creations made with cozy intention.</h1>
+                    <p>Tell us your colors, inspiration, and unique touches. We’ll craft a handmade keepsake that feels
+                        warm, elegant, and truly yours.</p>
+                    <ul class="custom-list">
+                        <li>Upload reference images</li>
+                        <li>Choose warm creams, blush, and mocha shades</li>
+                        <li>Add personalization, names, or heartfelt notes</li>
+                    </ul>
+                    <a class="button button-primary"
+                        href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=pragathiprakash79@gmail.com&amp;su=Custom%20Crochet%20Order%20Idea&amp;body=Hi%20Whimsy%20%26%20Weave%2C%0A%0AI%20would%20like%20to%20share%20a%20custom%20crochet%20idea.%0A%0AMy%20idea%3A%0APreferred%20colors%3A%0AReference%20details%3A%0A%0AThank%20you!"
+                        target="_blank" rel="noopener">Email your idea</a>
+                </div>
+                <div class="custom-order-visual fade-up delay-1">
+                    <div class="collage-piece piece-large"></div>
+                    <div class="collage-piece piece-small"></div>
+                    <div class="collage-piece piece-texture"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="custom-form-wrapper container fade-up" aria-labelledby="builder-title">
+            <div class="builder-header">
+                <p class="eyebrow">Custom crochet builder</p>
+                <h2 id="builder-title">Design your piece before you email us.</h2>
+                <p>Pick the item, size, colors, and finishing touches. The estimate updates instantly so your custom idea feels clear from the start.</p>
+            </div>
+
+            <div class="builder-layout">
+                <form class="form-grid custom-builder" id="customBuilder">
+                    <div class="form-group">
+                        <label for="builderItem">Item type</label>
+                        <select id="builderItem" name="item">
+                            <option value="Bouquet" data-base="1500">Crochet bouquet</option>
+                            <option value="Plushie" data-base="450">Mini plushie</option>
+                            <option value="Wearable" data-base="2200">Wearable piece</option>
+                            <option value="Baby blanket" data-base="2600">Baby blanket</option>
+                            <option value="Bag charm" data-base="250">Bag charm</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="builderSize">Size</label>
+                        <select id="builderSize" name="size">
+                            <option value="Mini" data-extra="0">Mini</option>
+                            <option value="Standard" data-extra="350" selected>Standard</option>
+                            <option value="Statement" data-extra="900">Statement</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="builderPalette">Color palette</label>
+                        <select id="builderPalette" name="palette">
+                            <option value="Blush and cream">Blush and cream</option>
+                            <option value="Mocha and ivory">Mocha and ivory</option>
+                            <option value="Pastel rainbow">Pastel rainbow</option>
+                            <option value="Custom colors">Custom colors</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="builderDeadline">Needed by</label>
+                        <input id="builderDeadline" name="deadline" type="date" />
+                    </div>
+
+                    <div class="form-group full-span">
+                        <label>Add-ons</label>
+                        <div class="option-row">
+                            <label class="option-pill"><input type="checkbox" value="Gift wrap" data-extra="120"> Gift wrap</label>
+                            <label class="option-pill"><input type="checkbox" value="Name tag" data-extra="90"> Name tag</label>
+                            <label class="option-pill"><input type="checkbox" value="Care card" data-extra="60"> Care card</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-span">
+                        <label for="builderNotes">Idea notes</label>
+                        <textarea id="builderNotes" name="notes" placeholder="Mention theme, reference details, colors, name, or gifting message."></textarea>
+                    </div>
+                </form>
+
+                <aside class="builder-summary">
+                    <span class="summary-label">Estimated custom price</span>
+                    <strong id="builderEstimate">&#8377;0</strong>
+                    <div class="summary-line">
+                        <span>Timeline</span>
+                        <b id="builderTimeline">5-7 days</b>
+                    </div>
+                    <div class="summary-line">
+                        <span>Selected add-ons</span>
+                        <b id="builderAddons">None</b>
+                    </div>
+                    <p id="builderPreview">A standard crochet bouquet in blush and cream.</p>
+                    <a class="button button-primary" id="builderEmail" target="_blank" rel="noopener" style="margin-bottom: 0.75rem;">Email this design</a>
+                    <button type="button" class="button button-primary" id="builderSubmit" style="background: linear-gradient(135deg, #d4a5a5 0%, #c48b8b 100%); border: none; font-weight: 600; width: 100%; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(212, 165, 165, 0.3);">Submit Custom Order</button>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/modal.js"></script>
+    <script>
+        const builder = document.getElementById('customBuilder');
+        const estimate = document.getElementById('builderEstimate');
+        const timeline = document.getElementById('builderTimeline');
+        const addonsText = document.getElementById('builderAddons');
+        const preview = document.getElementById('builderPreview');
+        const emailLink = document.getElementById('builderEmail');
+        const submitBtn = document.getElementById('builderSubmit');
+
+        const getSelectedOption = (id) => {
+            const select = document.getElementById(id);
+            return select.options[select.selectedIndex];
+        };
+
+        let currentTotal = 0;
+        let currentAddonNames = [];
+
+        const updateBuilder = () => {
+            const item = getSelectedOption('builderItem');
+            const size = getSelectedOption('builderSize');
+            const palette = getSelectedOption('builderPalette').value;
+            const deadline = document.getElementById('builderDeadline').value || 'Flexible';
+            const notes = document.getElementById('builderNotes').value.trim() || 'No extra notes yet.';
+            const addons = Array.from(builder.querySelectorAll('input[type="checkbox"]:checked'));
+            const addonTotal = addons.reduce((sum, addon) => sum + Number(addon.dataset.extra || 0), 0);
+            const total = Number(item.dataset.base) + Number(size.dataset.extra) + addonTotal;
+            const addonNames = addons.map((addon) => addon.value);
+
+            currentTotal = total;
+            currentAddonNames = addonNames;
+
+            estimate.textContent = `₹${total}`;
+            timeline.textContent = size.value === 'Statement' ? '10-14 days' : item.value === 'Bag charm' ? '3-5 days' : '5-7 days';
+            addonsText.textContent = addonNames.length ? addonNames.join(', ') : 'None';
+            preview.textContent = `A ${size.value.toLowerCase()} ${item.value.toLowerCase()} in ${palette.toLowerCase()}.`;
+
+            const body = [
+                'Hi Whimsy & Weave,',
+                '',
+                'I would like to request a custom crochet design.',
+                `Item: ${item.value}`,
+                `Size: ${size.value}`,
+                `Palette: ${palette}`,
+                `Add-ons: ${addonNames.length ? addonNames.join(', ') : 'None'}`,
+                `Needed by: ${deadline}`,
+                `Estimated price shown: ₹${total}`,
+                '',
+                `Notes: ${notes}`
+            ].join('\n');
+
+            emailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=pragathiprakash79@gmail.com&su=${encodeURIComponent('Custom Crochet Builder Request')}&body=${encodeURIComponent(body)}`;
+        };
+
+        if (builder) {
+            builder.addEventListener('input', updateBuilder);
+            builder.addEventListener('change', updateBuilder);
+            updateBuilder();
+        }
+
+        if (submitBtn) {
+            submitBtn.addEventListener('click', () => {
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const token = localStorage.getItem('authToken');
+                const userJSON = localStorage.getItem('user');
+                const user = userJSON ? JSON.parse(userJSON) : null;
+
+                const item = getSelectedOption('builderItem');
+                const size = getSelectedOption('builderSize');
+                const palette = getSelectedOption('builderPalette').value;
+                const deadline = document.getElementById('builderDeadline').value || 'Flexible';
+                const notes = document.getElementById('builderNotes').value.trim() || 'No extra notes yet.';
+
+                const choices = {
+                    item: item.value,
+                    size: size.value,
+                    palette: palette,
+                    deadline: deadline,
+                    notes: notes,
+                    addons: currentAddonNames
+                };
+
+                if (false && (!isLoggedIn || !token || !user)) {
+                    whimsyModal.confirm(
+                        'Sign In Required ✨',
+                        'Please log in to submit your custom order request directly to our database. We will save your custom design so you do not lose it!',
+                        () => {
+                            localStorage.setItem('savedCustomDesign', JSON.stringify(choices));
+                            localStorage.setItem('redirectAfterLogin', 'custom-order.html');
+                            window.location.href = 'login.html';
+                        },
+                        null
+                    );
+                    return;
+                }
+
+                const name = user?.name || '';
+                const email = user?.email || '';
+                const phone = user?.phone || '';
+
+                whimsyModal.show({
+                    type: 'info',
+                    title: 'Confirm Contact Details ✨',
+                    message: `
+                        <div style="text-align: left; margin-top: 1rem; width: 100%;">
+                            <p style="margin-bottom: 1rem; color: #555;">Please confirm your contact details for this custom order:</p>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display:block; font-size:0.85rem; font-weight:600; color:#555; margin-bottom:0.25rem;">Your Name *</label>
+                                <input type="text" id="customNameInput" value="${name}" required style="width:100%; padding:0.65rem; border:1px solid #ddd; border-radius:8px; font-family:inherit; box-sizing: border-box;">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display:block; font-size:0.85rem; font-weight:600; color:#555; margin-bottom:0.25rem;">Email Address *</label>
+                                <input type="email" id="customEmailInput" value="${email}" required style="width:100%; padding:0.65rem; border:1px solid #ddd; border-radius:8px; font-family:inherit; box-sizing: border-box;">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display:block; font-size:0.85rem; font-weight:600; color:#555; margin-bottom:0.25rem;">Phone Number *</label>
+                                <input type="tel" id="customPhoneInput" value="${phone}" required placeholder="+91 XXXXX XXXXX" style="width:100%; padding:0.65rem; border:1px solid #ddd; border-radius:8px; font-family:inherit; box-sizing: border-box;">
+                            </div>
+                        </div>
+                    `,
+                    primaryBtn: {
+                        text: 'Submit Request',
+                        callback: async () => {
+                            const finalName = document.getElementById('customNameInput')?.value.trim();
+                            const finalEmail = document.getElementById('customEmailInput')?.value.trim();
+                            const finalPhone = document.getElementById('customPhoneInput')?.value.trim();
+
+                            if (!finalName || !finalEmail || !finalPhone) {
+                                setTimeout(() => whimsyModal.toast('Please fill out all required fields', 'error'), 200);
+                                return;
+                            }
+
+                            // Show loading spinner
+                            whimsyModal.loading('Submitting Request...', 'Saving your custom order to our database.');
+
+                            try {
+                                const API_BASE = ['8081', '8080', '5500'].includes(window.location.port) ? 'http://127.0.0.1:5000' : '';
+                                const res = await fetch(`${API_BASE}/api/custom-orders/`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                                    },
+                                    body: JSON.stringify({
+                                        customerInfo: { name: finalName, email: finalEmail, phone: finalPhone },
+                                        productType: item.value,
+                                        customDetails: {
+                                            size: size.value,
+                                            palette: palette,
+                                            addons: currentAddonNames.length ? currentAddonNames.join(', ') : 'None',
+                                            deadline: deadline,
+                                            notes: notes
+                                        },
+                                        estimatedPrice: currentTotal,
+                                        timeline: size.value === 'Statement' ? '10-14 days' : item.value === 'Bag charm' ? '3-5 days' : '5-7 days'
+                                    })
+                                });
+
+                                const json = await res.json();
+                                if (!res.ok || json.success === false) {
+                                    throw new Error(json.message || 'Custom order submission failed');
+                                }
+
+                                whimsyModal.success(
+                                    'Request Saved! ✨',
+                                    'Your custom design has been saved in our database. Pragathi will review your order and contact you with a quote soon.',
+                                    {
+                                        primaryBtn: {
+                                            text: 'Email Design Copy',
+                                            callback: () => {
+                                                window.open(emailLink.href, '_blank');
+                                            }
+                                        },
+                                        secondaryBtn: {
+                                            text: 'Return to Home',
+                                            callback: () => window.location.href = 'index.html'
+                                        }
+                                    }
+                                );
+                            } catch (err) {
+                                console.error('Custom order submission error:', err);
+                                const savedOrders = JSON.parse(localStorage.getItem('guestCustomOrders') || '[]');
+                                savedOrders.push({
+                                    customerInfo: { name: finalName, email: finalEmail, phone: finalPhone },
+                                    productType: item.value,
+                                    customDetails: {
+                                        size: size.value,
+                                        palette: palette,
+                                        addons: currentAddonNames.length ? currentAddonNames.join(', ') : 'None',
+                                        deadline: deadline,
+                                        notes: notes
+                                    },
+                                    estimatedPrice: currentTotal,
+                                    timeline: size.value === 'Statement' ? '10-14 days' : item.value === 'Bag charm' ? '3-5 days' : '5-7 days',
+                                    submittedAt: new Date().toISOString()
+                                });
+                                localStorage.setItem('guestCustomOrders', JSON.stringify(savedOrders));
+                                whimsyModal.success(
+                                    'Request Saved! ✨',
+                                    'Your custom order details are saved. Pragathi will review your idea and contact you soon.',
+                                    {
+                                        primaryBtn: {
+                                            text: 'Email Design Copy',
+                                            callback: () => window.open(emailLink.href, '_blank')
+                                        },
+                                        secondaryBtn: {
+                                            text: 'Return to Home',
+                                            callback: () => window.location.href = 'index.html'
+                                        }
+                                    }
+                                );
+                            }
+                        }
+                    },
+                    secondaryBtn: {
+                        text: 'Cancel',
+                        callback: null
+                    }
+                });
+            });
+        }
+
+        // Restore saved custom design if redirecting back from login page
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedDesignJSON = localStorage.getItem('savedCustomDesign');
+            if (savedDesignJSON) {
+                try {
+                    const design = JSON.parse(savedDesignJSON);
+                    if (design.item) document.getElementById('builderItem').value = design.item;
+                    if (design.size) document.getElementById('builderSize').value = design.size;
+                    if (design.palette) document.getElementById('builderPalette').value = design.palette;
+                    if (design.deadline) document.getElementById('builderDeadline').value = design.deadline;
+                    if (design.notes) document.getElementById('builderNotes').value = design.notes;
+                    
+                    if (Array.isArray(design.addons)) {
+                        builder.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                            cb.checked = design.addons.includes(cb.value);
+                        });
+                    }
+                    
+                    updateBuilder();
+                    localStorage.removeItem('savedCustomDesign');
+                    
+                    // Auto open details popup if logged in
+                    if (localStorage.getItem('isLoggedIn') === 'true') {
+                        setTimeout(() => {
+                            document.getElementById('builderSubmit')?.click();
+                        }, 600);
+                    }
+                } catch (err) {
+                    console.error('Failed to load saved design:', err);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Whimsy & Weave | Products</title>
+
+    <link rel="stylesheet" href="./css/product.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-header" data-scroll>
+        <div class="header-inner">
+            <a class="brand-link" href="./index.html">
+<div class="brand-badge">
+    <img src="./img/images/logo.jpg" alt="Whimsy & Weave Logo">
+</div>
+                <div>
+                    <span class="brand-label">Whimsy &amp; Weave</span>
+                    <small>A  little whimsy  in every weave</small>
+                </div>
+            </a>
+             <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-links" aria-label="Primary navigation">
+                <a href="./index.html">Home</a>
+                <a href="./product.html" class="active">Products</a>
+                <a href="./custom-order.html">Custom Orders</a>
+                <a href="./about.html">About</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./workshop.html">Workshops</a>
+            </nav>
+
+            <div class="nav-right">
+                <label class="search-box">
+                    <span class="search-icon">&#128269;</span>
+                    <input id="search-input" type="search" placeholder="Search cozy pieces" />
+                </label>
+
+                <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+                    <span class="icon-heart">&#9829;</span>
+                    <span class="icon-badge" id="wishlist-count">0</span>
+                </a>
+
+                <a href="cart.html" class="icon-btn" aria-label="Cart">
+                    <span class="icon-cart">&#128722;</span>
+                    <span class="icon-badge" id="cart-count">0</span>
+                </a>
+
+                <a href="login.html" class="profile-button">Login</a>
+
+                
+            </div>
+        </div>
+
+        <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+            <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+            <nav class="drawer-nav" aria-label="Mobile navigation">
+                <a href="./index.html">Home</a>
+                <a href="./product.html" class="active">Products</a>
+                <a href="./custom-order.html">Custom Orders</a>
+                <a href="./about.html">About</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./workshop.html">Workshops</a>
+            </nav>
+            <div class="drawer-actions">
+                <label class="search-box drawer-search">
+                    <span class="search-icon">&#128269;</span>
+                    <input type="search" placeholder="Search cozy pieces" />
+                </label>
+                <div class="drawer-button-row">
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">&#9829;</a>
+                    <a href="cart.html" class="icon-btn" aria-label="Cart">&#128722;</a>
+                </div>
+                <a href="login.html" class="profile-button drawer-profile">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="filter-backdrop" id="filterBackdrop"></div>
+
+    <!-- HERO -->
+
+    <section class="products-hero">
+
+    <div class="hero-content">
+
+        <p class="eyebrow">
+            HANDMADE LUXURY CROCHET
+        </p>
+
+        <h1>
+            Handmade Crochet
+            Treasures
+        </h1>
+
+        <p class="hero-text">
+            Soft handmade creations stitched with love.
+        </p>
+
+        <a href="#products" class="hero-btn">
+            Explore Collection
+        </a>
+
+    </div>
+
+</section>
+
+    <section class="gift-finder" aria-labelledby="gift-finder-title">
+        <div class="gift-finder-copy">
+            <p class="eyebrow">Gift finder</p>
+            <h2 id="gift-finder-title">Find a handmade match in seconds.</h2>
+            <p>Choose the moment, budget, and vibe to surface crochet pieces that feel personal.</p>
+        </div>
+
+        <div class="gift-finder-panel">
+            <label>
+                Occasion
+                <select id="giftOccasion">
+                    <option value="birthday">Birthday</option>
+                    <option value="baby">Baby shower</option>
+                    <option value="self-care">Self-care</option>
+                    <option value="romantic">Romantic gift</option>
+                </select>
+            </label>
+            <label>
+                Budget
+                <select id="giftBudget">
+                    <option value="under-500">Under &#8377;500</option>
+                    <option value="500-1000">&#8377;500 - &#8377;1000</option>
+                    <option value="1000-3000">&#8377;1000 - &#8377;3000</option>
+                    <option value="above-3000">Above &#8377;3000</option>
+                </select>
+            </label>
+            <label>
+                Style
+                <select id="giftStyle">
+                    <option value="cute">Cute</option>
+                    <option value="floral">Floral</option>
+                    <option value="wearable">Wearable</option>
+                    <option value="keepsake">Keepsake</option>
+                </select>
+            </label>
+            <button class="button button-primary" id="findGiftBtn" type="button">Find gifts</button>
+        </div>
+
+        <div class="gift-results" id="giftResults" aria-live="polite"></div>
+    </section>
+
+    <!-- MAIN -->
+
+    <main class="products-layout">
+
+        <!-- FILTERS -->
+
+        <!-- FILTER PANEL -->
+
+        <aside class="filters">
+
+            <div class="filter-header">
+
+                <h3>Filters</h3>
+
+                <button id="clearFilters">
+                    Clear All
+                </button>
+
+            </div>
+
+            <!-- CATEGORY -->
+
+            <div class="filter-dropdown">
+
+                <button class="filter-toggle">
+                    Categories
+                    <span>+</span>
+                </button>
+
+                <div class="filter-content">
+
+                    <label><input type="checkbox" value="bouquets"> Bouquets</label>
+                    <label><input type="checkbox" value="plushies"> Plushies</label>
+                    <label><input type="checkbox" value="hair accessories"> Hair Accessories</label>
+                    <label><input type="checkbox" value="wearables"> Wearables</label>
+                    <label><input type="checkbox" value="accessories"> Accessories</label>
+                    <label><input type="checkbox" value="blankets"> Blankets</label>
+
+                </div>
+
+            </div>
+
+            <!-- PRICE -->
+
+            <div class="filter-dropdown">
+
+                <button class="filter-toggle">
+                    Price
+                    <span>+</span>
+                </button>
+
+                <div class="filter-content">
+
+                    <label><input type="radio" name="price" value="under-500"> Under &#8377;500</label>
+                    <label><input type="radio" name="price" value="500-1000"> &#8377;500 - &#8377;1000</label>
+                    <label><input type="radio" name="price" value="1000-3000"> &#8377;1000 - &#8377;3000</label>
+                    <label><input type="radio" name="price" value="above-3000"> Above &#8377;3000</label>
+
+                </div>
+
+            </div>
+
+            <!-- COLORS -->
+
+            <div class="filter-dropdown">
+
+                <button class="filter-toggle">
+                    Colors
+                    <span>+</span>
+                </button>
+
+                <div class="filter-content color-swatches">
+
+                    <div class="color-dot pink" data-color="#f3c1c6"></div>
+                    <div class="color-dot beige" data-color="#e4c8b7"></div>
+                    <div class="color-dot mocha" data-color="#6f4e3f"></div>
+                    <div class="color-dot cream" data-color="#f7efe6"></div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- PRODUCTS -->
+
+
+        <!-- TOOLBAR -->
+
+        <div class="toolbar">
+
+            <div class="results-count">
+                <span id="resultsCount">0</span> Products
+            </div>
+
+            <div class="toolbar-actions">
+
+                <select id="sortSelect">
+
+                    <option value="">Sort By</option>
+                    <option value="low">Low to High</option>
+                    <option value="high">High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="featured">Featured</option>
+
+                </select>
+
+                <button id="mobileFilterBtn">
+                    Filters
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCT GRID -->
+
+        <div class="products-grid" id="productsGrid"></div>
+
+    </main>
+
+    <!-- BESTSELLERS -->
+
+    <section class="special-section">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">Most Loved</p>
+
+            <h2>
+                Bestseller Collection
+            </h2>
+
+        </div>
+
+        <div class="carousel" id="bestsellerCarousel"></div>
+
+    </section>
+
+    <!-- BANNER -->
+
+    <section class="gift-banner">
+
+        <div class="gift-content">
+
+            <h2>
+                Personalized Crochet Gifts
+            </h2>
+
+            <p>
+                Handmade keepsakes crafted just for you.
+            </p>
+
+            <a href="./custom-order.html" class="button button-primary">
+    Customize Yours
+</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer site-footer-dark">
+        <div class="container footer-grid fade-up">
+            <div>
+                <h3>Whimsy &amp; Weave</h3>
+                <p>Luxury crochet creations that feel like a warm homecoming.</p>
+            </div>
+            <div>
+                <h4>Quick links</h4>
+                <a href="custom-order.html">Custom Order</a>
+                <a href="#story">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div>
+                <h4>Follow</h4>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Pinterest</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>pragathiprakash79@gmail.com
+                </p>
+                <p>9448015505</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="quick-view-modal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="quick-view-title">
+            <button class="modal-close" id="close-quick-view" aria-label="Close quick view">&times;</button>
+            <div class="modal-content">
+                <div class="modal-image"></div>
+                <div class="modal-copy">
+                    <span class="eyebrow">Quick view</span>
+                    <h2 id="quick-view-title"></h2>
+                    <p id="quick-view-description"></p>
+                    <div class="modal-meta">
+                        <span id="quick-view-category"></span>
+                        <span id="quick-view-price"></span>
+                    </div>
+                    <div class="modal-story" id="quick-view-story"></div>
+                    <div class="modal-actions">
+                        <button class="button button-primary" id="quick-view-cart">Add to cart</button>
+                        <button class="button button-muted" id="quick-view-wishlist">Save to wishlist</button>
+                    </div>
+                    <section class="review-panel" aria-labelledby="review-title">
+                        <div class="review-header">
+                            <div>
+                                <p class="eyebrow">Customer love</p>
+                                <h3 id="review-title">Reviews with photos</h3>
+                            </div>
+                            <span id="review-count">0 reviews</span>
+                        </div>
+
+                        <form class="review-form" id="review-form">
+                            <input type="hidden" id="review-product-id" />
+                            <div class="review-grid">
+                                <label>
+                                    Your name
+                                    <input id="review-name" type="text" placeholder="Enter your name" required />
+                                </label>
+                                <label>
+                                    Rating
+                                    <select id="review-rating" required>
+                                        <option value="5">5 stars</option>
+                                        <option value="4">4 stars</option>
+                                        <option value="3">3 stars</option>
+                                        <option value="2">2 stars</option>
+                                        <option value="1">1 star</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <label>
+                                Review
+                                <textarea id="review-text" placeholder="Share how the handmade piece felt, looked, or was gifted." required></textarea>
+                            </label>
+                            <label>
+                                Add a photo
+                                <input id="review-photo" type="file" accept="image/*" />
+                            </label>
+                            <div class="review-photo-preview" id="review-photo-preview" aria-live="polite"></div>
+                            <button class="button button-primary" type="submit">Submit review</button>
+                        </form>
+
+                        <div class="review-list" id="review-list"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/auth.js" defer></script>
+    <script src="./js/products.js" defer></script>
+    <script src="./js/ui.js" defer></script>
+
+    <script>
+
+        const toggles = document.querySelectorAll(".filter-toggle");
+
+        toggles.forEach(toggle => {
+
+            toggle.addEventListener("click", () => {
+
+                const content = toggle.nextElementSibling;
+
+                content.classList.toggle("active");
+
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cart | Whimsy & Weave</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/cart.css">
+
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="grain"></div>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="nav-left">
+
+            <a href="index.html" class="brand">
+                <div class="brand-badge">
+    <img src="./img/images/logo.jpg" alt="Whimsy & Weave Logo">
+</div>
+
+                
+
+                <div>
+
+                    <span class="brand-name">Whimsy &amp; Weave</span>
+
+                    <small>A little whimsy in every weave</small>
+
+                </div>
+
+            </a>
+
+        </div>
+
+        <nav class="nav-links">
+
+            <a href="index.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="workshop.html">Workshops</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+        <div class="nav-icons">
+
+            <a href="wishlist.html" class="icon-btn wishlist-btn">
+                ♡
+
+            </a>
+
+            <button class="icon-btn cart-count-btn">
+
+                🛒
+
+                <span id="cartCount">0</span>
+
+            </button>
+
+            <a href="login.html" class="profile-btn">
+                Profile
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="cart-hero">
+
+        <div class="floating-yarn yarn-1"></div>
+        <div class="floating-yarn yarn-2"></div>
+        <div class="floating-heart"></div>
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                WHIMSY & WEAVE CART
+            </p>
+
+            <h1>
+                Your Cozy Crochet Cart ✨
+            </h1>
+
+            <p>
+                Handmade treasures waiting to reach your doorstep.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- MAIN -->
+
+    <main class="cart-layout">
+
+        <!-- CART -->
+
+        <section class="cart-items-section">
+
+            <div id="cartItems"></div>
+
+            <!-- RECOMMENDED -->
+
+            <div class="recommend-section">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">
+                        YOU MAY ALSO LOVE
+                    </p>
+
+                    <h2>
+                        Cozy Handmade Picks
+                    </h2>
+
+                </div>
+
+                <div class="recommend-grid">
+
+                    <div class="recommend-card">
+
+                        <div class="recommend-image"></div>
+
+                        <h3>Koko Plushie</h3>
+
+                        <p>₹699</p>
+
+                        <button
+                            class="add-to-cart"
+                            data-id="1"
+                            data-title="Koko Plushie"
+                            data-image="./img/images/custom1.jpg"
+                            data-price="699"
+                            data-category="Plushies"
+                        >Add To Cart</button>
+
+
+                    </div>
+
+                    <div class="recommend-card">
+
+                        <div class="recommend-image bouquet"></div>
+
+                        <h3>Crochet Bouquet</h3>
+
+                        <p>₹1499</p>
+
+                        <button
+                            class="add-to-cart"
+                            data-id="2"
+                            data-title="Crochet Bouquet"
+                            data-image="./img/images/custom2.jpg"
+                            data-price="1499"
+                            data-category="Bouquets"
+                        >Add To Cart</button>
+
+
+                    </div>
+
+                    <div class="recommend-card">
+
+                        <div class="recommend-image keychain"></div>
+
+                        <h3>Panda Keychain</h3>
+
+                        <p>₹399</p>
+
+                        <button
+                            class="add-to-cart"
+                            data-id="3"
+                            data-title="Panda Keychain"
+                            data-image="./img/images/custom3.jpg"
+                            data-price="399"
+                            data-category="Keychains"
+                        >Add To Cart</button>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SUMMARY -->
+
+        <aside class="summary-card">
+
+            <h2>
+                Order Summary
+            </h2>
+
+            <div class="summary-line">
+
+                <span>Subtotal</span>
+
+                <span id="subtotal">₹0</span>
+
+            </div>
+
+            <div class="summary-line">
+
+                <span>Tax (5%)</span>
+
+                <span id="tax">₹0</span>
+
+            </div>
+
+            <div class="summary-line">
+
+                <span>Shipping</span>
+
+                <span id="shipping">₹99</span>
+
+            </div>
+
+            <div class="summary-line discount">
+
+                <span>Discount</span>
+
+                <span id="discount">-₹0</span>
+
+            </div>
+
+            <div class="coupon-box">
+
+                <input type="text" id="couponInput" placeholder="Enter Coupon">
+
+                <button id="applyCoupon">
+                    Apply
+                </button>
+
+            </div>
+
+            <div class="total-line">
+
+                <span>Total</span>
+
+                <span id="finalTotal">₹0</span>
+
+            </div>
+
+            <button class="checkout-btn" id="checkoutBtn">
+                Proceed To Checkout
+            </button>
+
+        </aside>
+
+</main>
+
+    <!-- CART LOGIC -->
+    <script src="js/auth.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/cart.js"></script>
+
+    <!-- CHECKOUT -->
+
+
+
+  
+
+    
+    
+</body>
+
+</html>

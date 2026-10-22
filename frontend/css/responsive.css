@@ -1,0 +1,11 @@
+@media(max-width:992px){
+
+.products-layout{
+grid-template-columns:1fr;
+}
+
+.nav-links{
+display:none;
+}
+
+}

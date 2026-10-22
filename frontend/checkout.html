@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Whimsy & Weave</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        :root {
+            --cream: #f7efe6;
+            --latte: #d7b7a5;
+            --mocha: #6f4e3f;
+            --blush: #e9c9c0;
+            --peach: #f3d2c5;
+            --ivory: #fbf6f1;
+            --stone: #7d6c63;
+            --text: #3d2f28;
+            --soft-shadow: 0 28px 80px rgba(104, 74, 60, 0.12);
+            --radius: 32px;
+            color-scheme: light;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top left, rgba(255, 246, 235, 0.8), transparent 32%),
+                linear-gradient(180deg, #fffaf4 0%, #f3e6dd 100%);
+            color: var(--text);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top left, rgba(255, 246, 235, 0.8), transparent 32%),
+                linear-gradient(180deg, #fffaf4 0%, #f3e6dd 100%);
+            color: var(--text);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            width: min(1180px, 90%);
+            margin: 0 auto;
+        }
+
+        .bg-blob {
+            position: fixed;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            filter: blur(110px);
+            opacity: .45;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .blob-1 {
+            background: var(--peach);
+            top: -140px;
+            left: -120px;
+        }
+
+        .blob-2 {
+            background: var(--blush);
+            right: -140px;
+            bottom: -140px;
+        }
+
+        .grain {
+            position: fixed;
+            inset: 0;
+            background: url("https://www.transparenttextures.com/patterns/noise.png");
+            opacity: .04;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, .58);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, .45);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .brand-badge {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(111, 78, 63, .18);
+            flex: 0 0 auto;
+        }
+
+        .brand-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brand span {
+            display: block;
+            font-weight: 800;
+            letter-spacing: .02em;
+        }
+
+        .brand small {
+            display: block;
+            color: var(--stone);
+            font-size: .78rem;
+            margin-top: .12rem;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            padding: .9rem 1.25rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dba58b, #b17261);
+            box-shadow: 0 14px 32px rgba(111, 78, 63, .18);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 38px rgba(111, 78, 63, .22);
+        }
+
+        .eyebrow {
+            color: var(--mocha);
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-size: .78rem;
+        }
+
+        /* ===== CHECKOUT PAGE ===== */
+        .checkout-hero {
+            padding: 4.5rem 0 3rem;
+            text-align: center;
+            background: transparent;
+        }
+
+        .checkout-hero h1 {
+            font-size: clamp(2.6rem, 6vw, 5rem);
+            line-height: 1;
+            margin-top: .8rem;
+            color: var(--text);
+        }
+
+        .checkout-hero p:last-child {
+            color: var(--stone) !important;
+            margin-top: 1rem !important;
+            font-size: 1.05rem;
+        }
+
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+            margin: 1rem auto 5rem;
+            align-items: start;
+        }
+
+        .checkout-form {
+            background: rgba(255, 255, 255, .66);
+            -webkit-backdrop-filter: blur(22px);
+            backdrop-filter: blur(22px);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid rgba(255, 255, 255, .58);
+        }
+
+        .checkout-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(111, 78, 63, .12);
+        }
+
+        .checkout-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dba58b, #b17261);
+            color: white;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            counter-increment: step-counter;
+            content: counter(step-counter);
+        }
+
+        .checkout-section:nth-child(1) .section-title::before {
+            content: '1';
+        }
+        .checkout-section:nth-child(2) .section-title::before {
+            content: '2';
+        }
+        .checkout-section:nth-child(3) .section-title::before {
+            content: '3';
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: .95rem 1rem;
+            border: 1px solid rgba(111, 78, 63, .16);
+            border-radius: 16px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, .82);
+            color: var(--text);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--latte);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(215, 183, 165, .18);
+        }
+
+        .required-text {
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        /* ===== PAYMENT METHOD SELECTION ===== */
+        .payment-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .payment-method {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-method input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .payment-method-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid rgba(111, 78, 63, .14);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            background: rgba(255, 255, 255, .72);
+        }
+
+        .payment-method input[type="radio"]:checked + .payment-method-label {
+            border-color: var(--latte);
+            background: rgba(247, 239, 230, .92);
+            box-shadow: 0 14px 32px rgba(111, 78, 63, .1);
+        }
+
+        .payment-method-icon {
+            font-size: 1.8rem;
+        }
+
+        .payment-method-info {
+            flex: 1;
+        }
+
+        .payment-method-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .payment-method-desc {
+            font-size: 0.8rem;
+            color: var(--stone);
+            margin-top: 0.25rem;
+        }
+
+        /* ===== ORDER SUMMARY ===== */
+        .checkout-summary {
+            background: rgba(255, 255, 255, .72);
+            -webkit-backdrop-filter: blur(22px);
+            backdrop-filter: blur(22px);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid rgba(255, 255, 255, .58);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-items {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(111, 78, 63, .12);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .summary-item-name {
+            flex: 1;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .summary-item-price {
+            color: var(--stone);
+        }
+
+        .summary-item-qty {
+            color: var(--stone);
+            font-size: 0.85rem;
+        }
+
+        .summary-totals {
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            color: var(--stone);
+        }
+
+        .summary-row.total {
+            border-top: 2px solid rgba(111, 78, 63, .12);
+            padding-top: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #dba58b, #b17261);
+            color: white;
+            border: none;
+            border-radius: 999px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 34px rgba(111, 78, 63, .2);
+        }
+
+        .checkout-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-summary {
+                position: relative;
+                top: 0;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-methods-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-form,
+            .checkout-summary {
+                padding: 1.5rem;
+            }
+
+            .header-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BACKGROUND -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="grain"></div>
+
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-badge">
+                    <img src="./img/images/logo.jpg" alt="Whimsy & Weave Logo">
+                </div>
+                <div>
+                    <span>Whimsy &amp; Weave</span>
+                    <small>A little whimsy in every weave</small>
+                </div>
+            </a>
+
+            <a href="cart.html" class="nav-btn">
+                ← Back to Cart
+            </a>
+        </div>
+    </header>
+
+    <!-- CHECKOUT HERO -->
+    <section class="checkout-hero">
+        <div class="container">
+            <p class="eyebrow">SECURE CHECKOUT</p>
+            <h1>Complete Your Cozy Order ✨</h1>
+            <p style="color: #666; margin-top: 0.5rem;">Fill in your details below to proceed to payment</p>
+        </div>
+    </section>
+
+    <!-- CHECKOUT CONTENT -->
+    <section class="checkout-main">
+        <div class="container checkout-container">
+            <!-- LEFT: FORM -->
+            <form class="checkout-form" id="checkoutForm">
+                
+                <!-- SHIPPING DETAILS -->
+                <div class="checkout-section">
+                    <h3 class="section-title">Shipping Address</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fname">First Name *</label>
+                            <input type="text" id="fname" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name *</label>
+                            <input type="text" id="lname" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXXXXXXX" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="address">Address *</label>
+                            <input type="text" id="address" name="address" placeholder="House No., Street, Area" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State *</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zip">ZIP Code *</label>
+                            <input type="text" id="zip" name="zipCode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country *</label>
+                            <input type="text" id="country" name="country" value="India" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAYMENT METHOD -->
+                <div class="checkout-section">
+                    <h3 class="section-title">Payment Method</h3>
+                    
+                    <div class="payment-methods-grid">
+                        <div class="payment-method">
+                            <input type="radio" id="upi" name="paymentMethod" value="upi" checked>
+                            <label for="upi" class="payment-method-label">
+                                <div class="payment-method-icon">📱</div>
+                                <div class="payment-method-info">
+                                    <div class="payment-method-name">UPI</div>
+                                    <div class="payment-method-desc">Academic Demo</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-method">
+                            <input type="radio" id="gpay" name="paymentMethod" value="gpay">
+                            <label for="gpay" class="payment-method-label">
+                                <div class="payment-method-icon">💳</div>
+                                <div class="payment-method-info">
+                                    <div class="payment-method-name">GPay</div>
+                                    <div class="payment-method-desc">Simulated</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-method">
+                            <input type="radio" id="phonepe" name="paymentMethod" value="phonepe">
+                            <label for="phonepe" class="payment-method-label">
+                                <div class="payment-method-icon">💳</div>
+                                <div class="payment-method-info">
+                                    <div class="payment-method-name">PhonePe</div>
+                                    <div class="payment-method-desc">Simulated</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-method">
+                            <input type="radio" id="card" name="paymentMethod" value="card">
+                            <label for="card" class="payment-method-label">
+                                <div class="payment-method-icon">🏧</div>
+                                <div class="payment-method-info">
+                                    <div class="payment-method-name">Card</div>
+                                    <div class="payment-method-desc">Demo Details Only</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD DETAILS (CONDITIONAL) -->
+                <div class="checkout-section" id="cardSection" style="display: none;">
+                    <h3 class="section-title" style="counter-increment: none;">Card Details</h3>
+                    
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="cardName">Card Holder Name *</label>
+                            <input type="text" id="cardName" name="cardHolderName" placeholder="Your Name">
+                        </div>
+                    </div>
+
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number *</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry">Expiry Date *</label>
+                            <input type="text" id="expiry" name="expiryDate" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV *</label>
+                            <input type="password" id="cvv" name="cvv" placeholder="***" maxlength="3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <p style="margin: 0 0 1rem; padding: 0.75rem; border-radius: 10px; background: #fff8e8; color: #6f4e3f; text-align: center;">
+                    Academic demo: digital payments are simulated and no real money is charged.
+                </p>
+                <button type="submit" class="checkout-btn">Proceed to Demo Payment</button>
+            </form>
+
+            <!-- RIGHT: ORDER SUMMARY -->
+            <div class="checkout-summary">
+                <h3 class="summary-title">Order Summary</h3>
+                
+                <div class="summary-items" id="summaryItems">
+                    <!-- Items will be populated here -->
+                </div>
+
+                <div class="summary-totals">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotalAmount">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>₹99</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (5%)</span>
+                        <span id="taxAmount">₹0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="totalAmount">₹0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./js/auth.js"></script>
+    <script src="./js/modal.js"></script>
+    <script>
+        /* ===================================
+           CHECKOUT PAGE
+        =================================== */
+
+        const CART_KEYS = {
+            primary: 'whimsyCart',
+            fallback: 'cart'
+        };
+
+        const API_BASE = ['8081', '8080', '5500'].includes(window.location.port)
+            ? 'http://127.0.0.1:5000'
+            : '';
+        let currentCheckoutCart = [];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async function() {
+            const isLoggedIn = Boolean(localStorage.getItem('authToken') && localStorage.getItem('isLoggedIn') === 'true');
+            if (!isLoggedIn) {
+                localStorage.setItem('redirectAfterLogin', 'checkout.html');
+                whimsyModal.info(
+                    'Login Required',
+                    'Please login or create an account to continue',
+                    {
+                        primaryBtn: {
+                            text: 'Login',
+                            callback: () => window.location.href = 'login.html'
+                        },
+                        secondaryBtn: {
+                            text: 'Sign Up',
+                            callback: () => window.location.href = 'signup.html'
+                        }
+                    }
+                );
+                return;
+            }
+
+            await loadCartSummary();
+            setupPaymentMethodToggle();
+        });
+
+        function getAuthToken() {
+            return localStorage.getItem('authToken');
+        }
+
+        // Load and display cart items
+        async function loadCartSummary() {
+            const authToken = getAuthToken();
+            const summaryItems = document.getElementById('summaryItems');
+            summaryItems.innerHTML = '';
+
+            let cart = [];
+            if (authToken) {
+                try {
+                    const res = await fetch(`${API_BASE}/api/cart/`, {
+                        headers: { Authorization: `Bearer ${authToken}` }
+                    });
+                    if (res.ok) {
+                        const json = await res.json();
+                        cart = Array.isArray(json.cart?.items) ? json.cart.items.map(item => ({
+                            id: item.productId,
+                            title: item.name,
+                            price: item.price,
+                            quantity: item.quantity
+                        })) : [];
+                    }
+                } catch (err) {
+                    console.warn('Cart fetch failed, falling back to local storage', err);
+                }
+            }
+
+            if (!cart.length) {
+                cart = JSON.parse(localStorage.getItem(CART_KEYS.primary) || localStorage.getItem(CART_KEYS.fallback) || '[]');
+            }
+            currentCheckoutCart = cart;
+
+            let subtotal = 0;
+            cart.forEach(item => {
+                const price = item.price || 0;
+                const quantity = item.quantity || 1;
+                const itemTotal = price * quantity;
+                subtotal += itemTotal;
+
+                const itemHTML = `
+                    <div class="summary-item">
+                        <div>
+                            <div class="summary-item-name">${item.title || item.name || 'Item'}</div>
+                            <div class="summary-item-qty">Qty: ${quantity}</div>
+                        </div>
+                        <div class="summary-item-price">₹${itemTotal.toFixed(0)}</div>
+                    </div>
+                `;
+                summaryItems.innerHTML += itemHTML;
+            });
+
+            // Calculate totals
+            const shipping = 99;
+            const tax = Math.round(subtotal * 0.05);
+            const total = subtotal + shipping + tax;
+
+            document.getElementById('subtotalAmount').innerText = '₹' + subtotal.toFixed(0);
+            document.getElementById('taxAmount').innerText = '₹' + tax.toFixed(0);
+            document.getElementById('totalAmount').innerText = '₹' + total.toFixed(0);
+        }
+
+        // Toggle card details based on payment method
+        function setupPaymentMethodToggle() {
+            const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+            const cardSection = document.getElementById('cardSection');
+
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', () => {
+                    if (method.value === 'card') {
+                        cardSection.style.display = 'block';
+                        // Make card fields required
+                        cardSection.querySelectorAll('input').forEach(field => field.required = true);
+                    } else {
+                        cardSection.style.display = 'none';
+                        // Make card fields not required
+                        cardSection.querySelectorAll('input').forEach(field => field.required = false);
+                    }
+                });
+            });
+        }
+
+        // Handle form submission
+        document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            const shippingAddress = {
+                name: `${formData.get('firstName')} ${formData.get('lastName')}`.trim(),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                city: formData.get('city'),
+                state: formData.get('state'),
+                pincode: formData.get('zipCode'),
+                country: formData.get('country')
+            };
+
+            const paymentMethod = formData.get('paymentMethod');
+            const isLoggedIn = Boolean(localStorage.getItem('authToken') && localStorage.getItem('isLoggedIn') === 'true');
+
+            if (!isLoggedIn) {
+                localStorage.setItem('redirectAfterLogin', 'checkout.html');
+                whimsyModal.info(
+                    'Login Required',
+                    'Please login or create an account to continue to payment',
+                    {
+                        primaryBtn: {
+                            text: 'Login',
+                            callback: () => window.location.href = 'login.html'
+                        },
+                        secondaryBtn: {
+                            text: 'Sign Up',
+                            callback: () => window.location.href = 'signup.html'
+                        }
+                    }
+                );
+                return;
+            }
+
+            // Store checkout data
+            localStorage.setItem('checkoutData', JSON.stringify({
+                shippingAddress,
+                paymentMethod,
+                timestamp: new Date().toISOString()
+            }));
+
+            if (!currentCheckoutCart.length) {
+                whimsyModal.error('Cart Empty', 'Please add products to your cart before checkout.');
+                return;
+            }
+
+            const submitButton = form.querySelector('.checkout-btn');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Placing Order...';
+
+            try {
+                const orderResponse = await fetch(`${API_BASE}/api/orders`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${getAuthToken()}`
+                    },
+                    body: JSON.stringify({
+                        paymentMethod,
+                        shippingAddress,
+                        items: currentCheckoutCart.map(item => ({
+                            productId: item.id || item.productId,
+                            quantity: item.quantity || 1,
+                            customization: item.customization || {}
+                        }))
+                    })
+                });
+
+                const orderData = await orderResponse.json();
+                if (!orderResponse.ok) {
+                    whimsyModal.error('Order Failed', orderData.message || 'Unable to place your order right now.');
+                    return;
+                }
+
+                localStorage.removeItem('whimsyCart');
+                localStorage.removeItem('cart');
+                localStorage.removeItem('checkoutCart');
+                localStorage.removeItem('checkoutTotals');
+                localStorage.setItem('lastOrderTracking', JSON.stringify({
+                    orderId: orderData.order_id,
+                    trackingNumber: orderData.trackingNumber,
+                    trackingUrl: orderData.trackingUrl
+                }));
+
+                Swal.fire({
+                    title: "Order Confirmed",
+                    html: `
+                        Thank you for shopping with us.<br><br>
+                        Order ID: ${orderData.order_id}<br>
+                        Tracking: ${orderData.trackingNumber}<br><br>
+                        A confirmation email has been sent.
+                    `,
+                    icon: "success",
+                    confirmButtonText: "Track Order"
+                }).then(() => {
+                    window.location.href = orderData.trackingUrl || 'tracking.html';
+                });
+            } catch (error) {
+                console.error('Checkout order error', error);
+                whimsyModal.error('Order Failed', 'Unable to place your order right now. Please try again.');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Proceed to Payment';
+            }
+            return;
+
+            Swal.fire({
+    title: "Order Confirmed ✨",
+
+    html: `
+      Thank you for shopping with us ❤️<br><br>
+      Your order will reach you in 5-7 days.<br><br>
+      Happy Shopping ✨
+    `,
+
+    icon: "success",
+
+    confirmButtonText: "Track Order"
+}).then(() => {
+
+    localStorage.removeItem('whimsyCart');
+
+    window.location.href =
+    'tracking.html';
+
+});
+        });
+
+        // Format card number
+        document.getElementById('cardNumber')?.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.match(/.{1,4}/g)?.join(' ') || '';
+            e.target.value = value;
+        });
+
+        // Format expiry date
+        document.getElementById('expiry')?.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // Format CVV (numbers only)
+        document.getElementById('cvv')?.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+       
+
+    </script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+     <script>
+
+const checkoutCart =
+  JSON.parse(
+    localStorage.getItem(
+      'checkoutCart'
+    ) || '[]'
+  );
+
+const checkoutTotals =
+  JSON.parse(
+    localStorage.getItem(
+      'checkoutTotals'
+    ) || '{}'
+  );
+
+console.log(checkoutCart);
+
+console.log(checkoutTotals);
+
+const subtotal =
+  document.getElementById("subtotal");
+
+const tax =
+  document.getElementById("tax");
+
+const finalTotal =
+  document.getElementById("finalTotal");
+
+if (subtotal) {
+  subtotal.textContent =
+    checkoutTotals.subtotal || "₹0";
+}
+
+if (tax) {
+  tax.textContent =
+    checkoutTotals.tax || "₹0";
+}
+
+if (finalTotal) {
+  finalTotal.textContent =
+    checkoutTotals.total || "₹0";
+}
+
+</script>
+    </body>
+
+</html>

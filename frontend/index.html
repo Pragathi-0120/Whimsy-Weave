@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whimsy & Weave | Cozy Crochet Luxury</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-header" data-scroll>
+        <div class="container header-inner">
+            <a class="brand-link" href="#home">
+                <div class="brand-badge">
+    <img src="./img/images/logo.jpg" alt="Whimsy & Weave Logo">
+</div>
+                
+                <div>
+                    <span class="brand-label">Whimsy &amp; Weave</span>
+                    <small>A  little whimsy  in every weave</small>
+                </div>
+            </a>
+
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="main-nav">
+                <a href="./index.html" class="active">Home</a>
+                <a href="./product.html">Products</a>
+                <a href="./workshop.html">Workshops</a>
+                <a href="./about.html" >About</a>
+                <a href="./contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <label class="search-box" for="search-input">
+                    <span class="search-icon">&#128269;</span>
+                    <input id="search-input" type="search" placeholder="Search cozy pieces" />
+                </label>
+                <a href="wishlist.html" class="icon-button" aria-label="Wishlist">
+                    <span class="icon-heart">♥</span>
+                    <span class="icon-badge" id="wishlist-count">0</span>
+                </a>
+                <a href="cart.html" class="icon-button" aria-label="Cart">
+                    <span class="icon-cart">🛒</span>
+                    <span class="icon-badge" id="cart-count">0</span>
+                </a>
+                <a class="profile-button" href="login.html">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-drawer" aria-hidden="true">
+        <nav class="drawer-nav">
+            <a href="./index.html">Home</a>
+            <a href="./product.html">Products</a>
+            <a href="./product.html">Shop</a>
+            <a href="./about.html">About</a>
+            <a href="./contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="hero section-hero" id="home">
+            <div class="hero-decor hero-blob"></div>
+            <div class="hero-decor hero-thread"></div>
+            <div class="hero-decor hero-sparkles"></div>
+
+            <div class="container hero-inner">
+                <div class="hero-intro fade-up">
+                    <p class="eyebrow">A dreamy crochet universe</p>
+                    <h1>A little whimsy in every weave.</h1>
+                    <p class="hero-copy">Enter a warm world of handcrafted crochet pieces, soft luxury textures and
+                        gentle handmade magic for your home and heart.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="./product.html">Shop the latest</a>
+                        <a class="button button-muted" href="./custom-order.html">Custom orders</a>
+                    </div>
+                    <div class="hero-pill-list">
+                        <span>Soft yarn details</span>
+                        <span>Limited artisan drops</span>
+                        <span>Luxury gifting</span>
+                    </div>
+                </div>
+
+                <div class="hero-display fade-up delay">
+                    <div class="hero-card floating-card">
+                        <div class="hero-card-top">
+                            <span class="hero-chip">New drop</span>
+                            <span class="hero-heart">♥</span>
+                        </div>
+                        <div class="hero-image">
+
+<img
+src="https://i.pinimg.com/736x/d5/ed/c4/d5edc4525d8b499afb7cda91de4180cc.jpg"
+alt="Luxury Crochet Collection">
+
+</div>
+                        <div class="hero-card-copy">
+                            <p class="eyebrow">Warm textures</p>
+                            <h2>Cloud-soft crochet wraps &amp; cushions.</h2>
+                        </div>
+                    </div>
+                    <div class="floating-icon blush-glow">✧</div>
+                    <div class="floating-icon float-left">✿</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-strip container" aria-label="Features">
+            <article class="feature-card fade-up">
+                <span class="feature-icon">🚚</span>
+                <h3>Free delivery</h3>
+                <p>Complimentary cozy shipping on every handcrafted order.</p>
+            </article>
+            <article class="feature-card fade-up delay-1">
+                <span class="feature-icon">🎁</span>
+                <h3>Perfect for gifting</h3>
+                <p>Soft elegant packaging designed for joyful unwrapping.</p>
+            </article>
+            <article class="feature-card fade-up delay-2">
+                <span class="feature-icon">💛</span>
+                <h3>Handmade with love</h3>
+                <p>Every stitch is created by artisans with care and intention.</p>
+            </article>
+        </section>
+
+        <section class="categories section-surface" id="categories">
+            <div class="container section-header fade-up">
+                <p class="eyebrow">Shop by category</p>
+                <h2>Find your next cozy charm.</h2>
+                <p>Explore dreamy crochet bouquets, playful plushies, and gifts that feel like a warm hug.</p>
+            </div>
+           <div class="category-grid container">
+
+    <a class="category-card fade-up delay-1" href="./product.html?category=bouquets">
+
+        <div class="category-thumb">
+            <img src="https://i.pinimg.com/736x/90/c3/ac/90c3ac1340a361587acb4a59e9be5dab.jpg" alt="Bouquets">
+        </div>
+
+        <h3>Bouquets</h3>
+
+    </a>
+
+    <a class="category-card fade-up delay-2" href="./product.html?category=plushies">
+
+        <div class="category-thumb">
+            <img src="https://i.pinimg.com/1200x/1f/a4/41/1fa44172f88fd72e51a1c735b079e41b.jpg" alt="Plushies">
+        </div>
+
+        <h3>Plushies</h3>
+
+    </a>
+
+    <a class="category-card fade-up delay-3" href="./product.html?category=wearables">
+
+        <div class="category-thumb">
+            <img src="https://i.pinimg.com/1200x/3b/dd/c5/3bddc58519b1c1af3b29b452b8342ef8.jpg" alt="wearable">
+        </div>
+
+        <h3>Wearables</h3>
+
+    </a>
+
+    <a class="category-card fade-up delay-4" href="./product.html?category=kids">
+
+        <div class="category-thumb">
+            <img src="https://i.pinimg.com/736x/27/1c/b9/271cb9ada8000cc0bb06f6d456792055.jpg" alt="Kids Crochet">
+        </div>
+
+        <h3>Kids</h3>
+
+    </a>
+
+    <a class="category-card fade-up delay-5" href="./product.html?category=accessories">
+
+        <div class="category-thumb">
+            <img src="https://i.pinimg.com/1200x/3c/1b/30/3c1b30185024f22cba0f846d641321cc.jpg" alt="Accessories">
+        </div>
+
+        <h3>Accessories</h3>
+
+    </a>
+
+</div>
+        </section>
+
+        <section class="featured-section" id="featured">
+            <div class="container section-header fade-up">
+                <p class="eyebrow">Featured products</p>
+                <h2>Handpicked crochet pieces from our latest collection.</h2>
+                <p>Browse the cozy shop and add dreamy favorites to your cart or wishlist.</p>
+            </div>
+            <div class="product-toolbar container fade-up delay-1">
+                <div class="search-panel">
+                    <label for="product-filter">Search products</label>
+                    <input id="product-filter" type="search" placeholder="Search by name or category" />
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-button" id="prev-slide" aria-label="Previous products">‹</button>
+                    <button class="slider-button" id="next-slide" aria-label="Next products">›</button>
+                </div>
+            </div>
+            <div class="container product-slider fade-up delay-2">
+                <div class="product-track" id="product-track" aria-live="polite"></div>
+            </div>
+            <div class="slider-meta container fade-up delay-3">
+                <div class="slider-state">Auto-play gently scrolls through curated crochet favorites.</div>
+                <div class="slider-dots" id="slider-dots" aria-label="Product slider navigation"></div>
+            </div>
+        </section>
+
+        <section class="story section-surface" id="story">
+            <div class="container section-header fade-up">
+                <p class="eyebrow">How it’s made</p>
+                <h2>From inspiration to your doorstep.</h2>
+                <p>Each piece is thoughtfully designed, assembled with premium yarn, and delivered as an inviting
+                    keepsake.</p>
+            </div>
+            <div class="process-grid container">
+                <article class="process-card fade-up">
+                    <span class="process-chip">01</span>
+                    <h3>Design</h3>
+                    <p>We sketch cozy concepts with soft palettes and whimsical forms.</p>
+                </article>
+                <article class="process-card fade-up delay-1">
+                    <span class="process-chip">02</span>
+                    <h3>Materials</h3>
+                    <p>Only luxurious cotton, fleece, and satin-edge yarn are chosen for softness.</p>
+                </article>
+                <article class="process-card fade-up delay-2">
+                    <span class="process-chip">03</span>
+                    <h3>Crafting</h3>
+                    <p>Artisans hand-stitch every detail with patience and premium care.</p>
+                </article>
+                <article class="process-card fade-up delay-3">
+                    <span class="process-chip">04</span>
+                    <h3>Delivery</h3>
+                    <p>Each order arrives wrapped in blush tissue and a sprinkling of heart-shaped charm.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="reviews-section">
+
+    <div class="reviews-container">
+
+        <div class="reviews-image fade-up">
+
+            <div class="review-badge">
+                Customer Stories
+            </div>
+
+            
+            <img src="./img/images/productreview.png" alt="Customer Review">
+
+        </div>
+
+        <div class="reviews-content fade-up delay-2">
+
+            <p class="review-eyebrow">
+                CUSTOMER REVIEWS
+            </p>
+
+            <h2>
+                Loved by Crochet Lovers ✨
+            </h2>
+
+            <div class="review-card">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    “The crochet bouquet felt magical the moment it arrived.”
+                </p>
+
+                <h4>
+                    Maya Silver
+                </h4>
+
+            </div>
+
+            <div class="review-card">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    “Beautiful handmade quality and cozy aesthetic.”
+                </p>
+
+                <h4>
+                    Amelia Hart
+                </h4>
+
+            </div>
+
+            <div class="review-card">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    “The plushie felt handcrafted with love.”
+                </p>
+
+                <h4>
+                    Lila June
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <section class="custom-order-section" id="custom-order">
+            <div class="container custom-grid fade-up">
+                <div class="custom-copy">
+                    <p class="eyebrow">Custom order</p>
+                    <h2>Design a one-of-a-kind crochet piece.</h2>
+                    <p>Choose your palette, upload inspiration, and create an heirloom with soft textures and warm
+                        charm.</p>
+                    <ul class="custom-list">
+                        <li>Upload inspiration images</li>
+                        <li>Choose colors and yarn textures</li>
+                        <li>Add personalized notes or initials</li>
+                    </ul>
+                    <a class="button button-primary" href="custom-order.html">Start your custom order</a>
+                </div>
+                <div class="custom-collage">
+                    <div class="collage-piece piece-large"></div>
+                    <div class="collage-piece piece-small"></div>
+                    <div class="collage-piece piece-texture"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-section" id="contact">
+            <div class="container newsletter-card fade-up">
+                <div>
+                    <p class="eyebrow">Join our cozy crochet club</p>
+                    <h2>Subscribe for soft drops, craft stories, and styling whispers.</h2>
+                </div>
+                <form id="newsletter-form" class="newsletter-form" novalidate>
+                    <label for="newsletter-email" class="sr-only">Email</label>
+                    <input id="newsletter-email" type="email" placeholder="you@cozymeadow.com" required />
+                    <button class="button button-glow" type="submit">Subscribe</button>
+                </form>
+                <p class="newsletter-note">Receive new collection previews before they sell out.</p>
+            </div>
+            
+        </section>
+    </main>
+    
+
+    <footer class="site-footer site-footer-dark">
+        <div class="container footer-grid fade-up">
+            <div>
+                <h3>Whimsy &amp; Weave</h3>
+                <p>Luxury crochet creations that feel like a warm homecoming.</p>
+            </div>
+            <div>
+                <h4>Quick links</h4>
+                <a href="product.html">Shop</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>
+                <h4>Follow</h4>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Pinterest</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>pragathiprakash79@gmail.com</p>
+                <p>9448015505</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="quick-view-modal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="quick-view-title">
+            <button class="modal-close" id="close-quick-view" aria-label="Close quick view">×</button>
+            <div class="modal-content">
+                <div class="modal-image"></div>
+                <div class="modal-copy">
+                    <span class="eyebrow">Quick view</span>
+                    <h2 id="quick-view-title"></h2>
+                    <p id="quick-view-description"></p>
+                    <div class="modal-meta">
+                        <span id="quick-view-category"></span>
+                        <span id="quick-view-price"></span>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="button button-primary" id="quick-view-cart">Add to cart</button>
+                        <button class="button button-muted" id="quick-view-wishlist">Save to wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="home-chatbot" id="home-chatbot" aria-label="Whimsy chat assistant">
+        <button class="chatbot-toggle" id="chatbot-toggle" type="button" aria-expanded="false" aria-controls="chatbot-panel">
+            <span>Chat</span>
+        </button>
+
+        <div class="chatbot-panel" id="chatbot-panel" aria-hidden="true">
+            <div class="chatbot-header">
+                <div>
+                    <strong>Whimsy Assistant</strong>
+                    <small>Ask about products, gifts, orders, or crochet ideas.</small>
+                </div>
+                <button class="chatbot-close" id="chatbot-close" type="button" aria-label="Close chat">x</button>
+            </div>
+
+            <div class="chatbot-messages" id="chatbot-messages" aria-live="polite">
+                <div class="chatbot-message bot">
+                    Hi! I can help you find cozy crochet gifts, plan a custom order, or answer questions.
+                </div>
+            </div>
+
+            <form class="chatbot-form" id="chatbot-form">
+                <label class="sr-only" for="chatbot-input">Message</label>
+                <input id="chatbot-input" type="text" placeholder="Ask Whimsy Assistant..." autocomplete="off" />
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+<div class="subscribe-toast" id="subscribeToast">
+
+    <div class="toast-icon">
+        ✨
+    </div>
+
+   <div class="mini-popup" id="miniPopup">
+    ✨ Successfully subscribed
+</div>
+<section class="products-section">
+
+    <h2 class="section-title">
+        Our Handmade Collection
+    </h2>
+
+    <div id="products-container"
+         class="products-grid">
+
+    </div>
+
+</section>
+
+</div>
+</body>
+
+</html>
